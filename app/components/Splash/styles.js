@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { color, fontFamily, padding, fontSize } from "../../styles/theme"
+import { color, fontFamily, padding, fontSize } from "../../styles/theme";
 
 const resizeMode = 'contain';
 
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         fontSize:fontSize.large + 5,
         lineHeight:fontSize.large + 7,
         fontFamily: fontFamily.medium,
-        color: theme.color.brandPrimary,
+        color: color.brandPrimary,
         letterSpacing: 1
     },
 
