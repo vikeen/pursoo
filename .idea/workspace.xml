@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="547c6828-634a-4686-90bc-af4e90a8d8ba" name="Default" comment="" />
+    <list default="true" id="547c6828-634a-4686-90bc-af4e90a8d8ba" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/app/assets/images/characters/elf-male-fighter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/characters/elf-male-ranger.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/characters/elf-male-wizard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/characters/fey-female-blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/characters/fey-female-green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/characters/fey-female-red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/characters/human-female-fighter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/characters/human-female-ranger.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/characters/human-female-rogue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/characters/human-male-shopkeeper-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/characters/human-male-shopkeeper-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/characters/human-male-shopkeeper-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/exercise-image.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/heartbeat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/logo-lead.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/mountains.png" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -89,8 +107,8 @@
       <file leaf-file-name="Login.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/modules/auth/scenes/Login/Login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="54" column="20" lean-forward="true" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+            <state relative-caret-position="175">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -107,6 +125,9 @@
       <find>user</find>
       <find>console.log</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -149,6 +170,9 @@
     <option name="width" value="1680" />
     <option name="height" value="1027" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <autoscrollToSource ProjectPane="true" />
@@ -173,6 +197,27 @@
               <item name="FitnessQuestReactNative" type="b2602c69:ProjectViewProjectNode" />
               <item name="FitnessQuestReactNative" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FitnessQuestReactNative" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FitnessQuestReactNative" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FitnessQuestReactNative" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FitnessQuestReactNative" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FitnessQuestReactNative" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FitnessQuestReactNative" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="characters" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FitnessQuestReactNative" type="b2602c69:ProjectViewProjectNode" />
@@ -325,21 +370,20 @@
       <updated>1524509415871</updated>
       <workItem from="1524509418172" duration="131000" />
       <workItem from="1524509559762" duration="68000" />
-      <workItem from="1524509650963" duration="2591000" />
+      <workItem from="1524509650963" duration="2833000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2790000" />
+    <option name="totallyTimeSpent" value="3032000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="TypeScript" />
@@ -514,8 +558,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/modules/auth/scenes/Login/Login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="54" column="20" lean-forward="true" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+        <state relative-caret-position="175">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
