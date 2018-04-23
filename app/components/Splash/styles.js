@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: color.white
+        backgroundColor: color.brandPrimary
     },
 
     wrapper:{
@@ -20,19 +20,11 @@ const styles = StyleSheet.create({
     },
 
     image:{
-        height: 100,
-        width: 100,
-        backgroundColor: color.grey,
+        height: 300,
+        width: 300,
+        backgroundColor: color.brandPrimary,
         marginBottom: padding,
         resizeMode
-    },
-
-    title: {
-        fontSize:fontSize.large + 5,
-        lineHeight:fontSize.large + 7,
-        fontFamily: fontFamily.medium,
-        color: color.brandPrimary,
-        letterSpacing: 1
     },
 
     activityIndicatorContainer: {

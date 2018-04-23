@@ -1,25 +1,23 @@
 import React from 'react';
 import {Facebook} from 'expo';
 import {Text, View, TouchableOpacity, Image} from 'react-native';
+import Logo from "../../../../assets/images/logo-lead.png";
 
 import {Button, SocialIcon, Divider} from 'react-native-elements'
-import {Actions} from 'react-native-router-flux'
+import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
-import {actions as auth, constants as c} from "../../index"
+import {actions as auth, constants as c} from "../../index";
 
 const {signInWithFacebook} = auth;
 
-import styles from "./styles"
+import styles from "./styles";
 
 class Welcome extends React.Component {
+    state = {};
     constructor() {
         super();
-        this.state = {};
 
-
-        this.onSuccess = this.onSuccess.bind(this);
-        this.onError = this.onError.bind(this);
         this.onSignInWithFacebook = this.onSignInWithFacebook.bind(this);
     }
 
@@ -34,24 +32,23 @@ class Welcome extends React.Component {
         }
     }
 
-    onSuccess({exists, user}) {
+    onSuccess = ({exists, user}) => {
         if (exists) {
             Actions.Main();
         } else {
             Actions.CompleteProfile({user})
         }
-    }
+    };
 
-    onError(error) {
+    onError = (error) => {
         alert(error.message);
-    }
+    };
 
     render() {
         return (
             <View style={styles.container}>
                 <View style={styles.topContainer}>
-                    <Image style={styles.image} source={{uri: "/app/assets/images/logo-lead.png"}}/>
-                    <Text style={styles.title}>Quotes</Text>
+                    <Image style={styles.image} source={Logo}/>
                 </View>
 
                 <View style={styles.bottomContainer}>

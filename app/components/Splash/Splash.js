@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, ActivityIndicator, Image} from 'react-native';
+import Logo from "../../assets/images/logo-lead.png";
 
 import styles from './styles'
 
@@ -8,8 +9,7 @@ export default class extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={styles.wrapper}>
-                    <Image style={styles.image} source={{uri: ""}}/>
-                    <Text style={styles.title}>Quotes</Text>
+                    <Image style={styles.image} source={Logo}/>
                 </View>
                 <View style={styles.activityIndicatorContainer}>
                     <ActivityIndicator animating={true}/>

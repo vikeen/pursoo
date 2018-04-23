@@ -21,19 +21,11 @@ const styles = StyleSheet.create({
     },
 
     image: {
-        height: 100,
-        width: 100,
-        backgroundColor: color.grey,
+        height: 300,
+        width: 300,
+        backgroundColor: color.brandPrimary,
         marginBottom: padding,
         resizeMode
-    },
-
-    title: {
-        fontSize: fontSize.large + 2,
-        lineHeight: fontSize.large + 4,
-        fontFamily: fontFamily.bold,
-        color: color.white,
-        letterSpacing: 1
     },
 
     subText: {
