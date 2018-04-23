@@ -50,7 +50,7 @@ class Welcome extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={styles.topContainer}>
-                    <Image style={styles.image} source={{uri: ""}}/>
+                    <Image style={styles.image} source={{uri: "/app/assets/images/logo-lead.png"}}/>
                     <Text style={styles.title}>Quotes</Text>
                 </View>
 

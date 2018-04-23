@@ -1,5 +1,5 @@
 import React from 'react';
-import { Scene, Router, ActionConst, Stack, Modal, Tabs } from 'react-native-router-flux';
+import {Scene, Router, ActionConst, Stack, Modal, Tabs} from 'react-native-router-flux';
 
 //Splash Component
 import Splash from '../components/Splash/Splash';
@@ -14,9 +14,9 @@ import Home from '../modules/home/scenes/Home';
 
 //Import Store, actions
 import store from '../redux/store'
-import { checkLoginStatus } from "../modules/auth/actions";
+import {checkLoginStatus} from "../modules/auth/actions";
 
-import { color, navTitleStyle } from "../styles/theme";
+import {color, navTitleStyle} from "../styles/theme";
 
 export default class extends React.Component {
     constructor() {

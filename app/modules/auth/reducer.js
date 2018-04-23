@@ -1,8 +1,8 @@
-import { AsyncStorage } from 'react-native';
+import {AsyncStorage} from 'react-native';
 
 import * as t from './actionTypes';
 
-let initialState = { isLoggedIn: false, user: null };
+let initialState = {isLoggedIn: false, user: null};
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -14,7 +14,7 @@ const authReducer = (state = initialState, action) => {
                 ['user', JSON.stringify(user)]
             ]);
 
-            state = Object.assign({}, state, { isLoggedIn: true, user: user });
+            state = Object.assign({}, state, {isLoggedIn: true, user: user});
 
             return state;
 
@@ -22,7 +22,7 @@ const authReducer = (state = initialState, action) => {
             let keys = ['user'];
             AsyncStorage.multiRemove(keys);
 
-            state = Object.assign({}, state, {isLoggedIn: false, user: null });
+            state = Object.assign({}, state, {isLoggedIn: false, user: null});
 
             return state;
 

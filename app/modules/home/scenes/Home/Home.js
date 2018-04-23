@@ -1,5 +1,6 @@
 import React from 'react';
-var { View, StyleSheet, Alert } = require('react-native');
+
+var {View, StyleSheet, Alert} = require('react-native');
 
 import {Button} from 'react-native-elements'
 import {Actions} from 'react-native-router-flux';
@@ -7,16 +8,17 @@ import {connect} from 'react-redux';
 
 import styles from "./styles"
 
-import { actions as auth, theme } from "../../../auth/index"
-const { signOut } = auth;
+import {actions as auth, theme} from "../../../auth/index"
 
-const { color } = theme;
+const {signOut} = auth;
+
+const {color} = theme;
 
 class Home extends React.Component {
-    constructor(){
+    constructor() {
         super();
-        this.state = { };
-        
+        this.state = {};
+
         this.onSignOut = this.onSignOut.bind(this);
     }
 
@@ -48,4 +50,4 @@ class Home extends React.Component {
     }
 }
 
-export default connect(null, { signOut })(Home);
+export default connect(null, {signOut})(Home);

@@ -1,20 +1,21 @@
 import React from 'react';
 
-import { Actions } from 'react-native-router-flux';
-import { connect } from 'react-redux';
+import {Actions} from 'react-native-router-flux';
+import {connect} from 'react-redux';
 
-import { actions as auth } from "../../index"
-const { resetPassword } = auth;
+import {actions as auth} from "../../index"
+
+const {resetPassword} = auth;
 
 import Form from "../../components/Form"
 
 const fields = [
     {
-        key:'email',
+        key: 'email',
         label: "Email Address",
-        placeholder:"Email",
-        autoFocus:false,
-        secureTextEntry:false,
+        placeholder: "Email",
+        autoFocus: false,
+        secureTextEntry: false,
         value: "",
         type: "email"
     }
@@ -23,14 +24,14 @@ const fields = [
 const error = {
     general: "",
     email: ""
-}
+};
 
 class ForgotPassword extends React.Component {
     constructor() {
         super();
         this.state = {
             error: error
-        }
+        };
 
         this.onSubmit = this.onSubmit.bind(this);
         this.onSuccess = this.onSuccess.bind(this);
@@ -44,7 +45,7 @@ class ForgotPassword extends React.Component {
     }
 
     onSuccess() {
-        alert("Password Reminder Sent")
+        alert("Password Reminder Sent");
         Actions.pop();
     }
 
@@ -59,18 +60,18 @@ class ForgotPassword extends React.Component {
                 errObj[key] = error[key];
             })
         }
-        
+
         this.setState({error: errObj});
     }
-    
+
     render() {
         return (
-                <Form fields={fields}
-                      onSubmit={this.onSubmit}
-                      buttonTitle={"SUBMIT"}
-                      error={this.state.error}/>
+            <Form fields={fields}
+                  onSubmit={this.onSubmit}
+                  buttonTitle={"SUBMIT"}
+                  error={this.state.error}/>
         );
     }
 }
 
-export default connect(null, { resetPassword })(ForgotPassword);
+export default connect(null, {resetPassword})(ForgotPassword);

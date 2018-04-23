@@ -1,25 +1,26 @@
-import { StyleSheet } from 'react-native';
-import { theme } from "../../index"
-const { padding, color, fontSize, fontFamily, windowWidth, normalize } = theme;
+import {StyleSheet} from 'react-native';
+import {theme} from "../../index";
+
+const {padding, color, fontSize, fontFamily, windowWidth, normalize} = theme;
 
 const resizeMode = 'contain';
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
+    container: {
+        flex: 1,
         backgroundColor: color.white
     },
 
-    topContainer:{
-        flex:1,
-        paddingHorizontal:15,
+    topContainer: {
+        flex: 1,
+        paddingHorizontal: 15,
         paddingBottom: padding * 2,
-        justifyContent:"center",
-        alignItems:"center",
-        backgroundColor: "#FF553F",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: theme.color.brandPrimary,
     },
 
-    image:{
+    image: {
         height: 100,
         width: 100,
         backgroundColor: color.grey,
@@ -27,25 +28,25 @@ const styles = StyleSheet.create({
         resizeMode
     },
 
-    title:{
+    title: {
         fontSize: fontSize.large + 2,
         lineHeight: fontSize.large + 4,
         fontFamily: fontFamily.bold,
-        color:color.white,
+        color: color.white,
         letterSpacing: 1
     },
 
-    subText:{
+    subText: {
         color: "#414141",
         fontSize: fontSize.large,
         lineHeight: fontSize.large + 10,
-        marginVertical:padding * 2
+        marginVertical: padding * 2
     },
 
     //===============================
 
-    bottomContainer:{
-        backgroundColor:"white",
+    bottomContainer: {
+        backgroundColor: "white",
         paddingVertical: padding * 3,
         shadowColor: "#000000",
         shadowOpacity: 0.8,
@@ -56,68 +57,68 @@ const styles = StyleSheet.create({
         }
     },
 
-    buttonContainer:{
-        justifyContent:"center",
-        alignItems:"center"
+    buttonContainer: {
+        justifyContent: "center",
+        alignItems: "center"
     },
 
-    containerView:{
+    containerView: {
         width: windowWidth - 40
     },
 
-    socialButton:{
+    socialButton: {
         height: normalize(55),
-        borderRadius:4,
-        marginTop:0,
-        marginBottom:0
+        borderRadius: 4,
+        marginTop: 0,
+        marginBottom: 0
     },
 
-    button:{
-        backgroundColor: "#FF553F",
+    button: {
+        backgroundColor: theme.color.brandPrimary,
         height: normalize(55)
     },
 
-    buttonText:{
+    buttonText: {
         fontSize: fontSize.regular + 2,
         fontFamily: fontFamily.medium
     },
 
-    bottom:{
+    bottom: {
         flexDirection: "row",
-        justifyContent:"center",
-        alignItems:"center",
+        justifyContent: "center",
+        alignItems: "center",
         marginTop: padding * 2
     },
 
-    bottomText:{
+    bottomText: {
         fontSize: fontSize.regular,
         fontFamily: fontFamily.medium,
         marginRight: 5,
         color: "#414141"
     },
 
-    signInText:{
+    signInText: {
         fontSize: fontSize.regular,
-        color: "#FF553F",
+        color: theme.color.brandPrimary,
         fontFamily: fontFamily.medium
     },
 
-    orContainer:{
-        justifyContent:"center",
-        alignItems:"center",
+    orContainer: {
+        justifyContent: "center",
+        alignItems: "center",
         height: 40,
         width: windowWidth
     },
 
-    divider:{
+    divider: {
         backgroundColor: '#D0D5DA',
-        position:"absolute",
-        top:19,
+        position: "absolute",
+        top: 19,
         left: 20,
         right: 20
     },
 
-    orText:{
+    orText: {
         backgroundColor: color.white,
         fontSize: fontSize.regular,
         fontFamily: fontFamily.medium,

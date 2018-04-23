@@ -1,16 +1,17 @@
-import { StyleSheet } from 'react-native';
-import { theme } from "../../index"
-const { padding, color, fontSize, fontFamily, windowWidth, normalize } = theme;
+import {StyleSheet} from 'react-native';
+import {theme} from "../../index"
+
+const {padding, color, fontSize, fontFamily, windowWidth, normalize} = theme;
 
 const resizeMode = 'contain';
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1
+    container: {
+        flex: 1
     },
-  
-    bottomContainer:{
-        backgroundColor:"white",
+
+    bottomContainer: {
+        backgroundColor: "white",
         paddingVertical: padding * 3,
         shadowColor: "#000000",
         shadowOpacity: 0.8,
@@ -21,9 +22,9 @@ const styles = StyleSheet.create({
         }
     },
 
-    buttonContainer:{
-        justifyContent:"center",
-        alignItems:"center"
+    buttonContainer: {
+        justifyContent: "center",
+        alignItems: "center"
     }
 });
 

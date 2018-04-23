@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
-import { Font, AppLoading } from 'expo';
+import React, {Component} from 'react';
+import {Provider} from 'react-redux';
+import {Font, AppLoading} from 'expo';
 
 import Router from './app/config/routes'
 import store from './app/redux/store';
@@ -39,10 +39,10 @@ export default class App extends Component {
                 />
             );
         }
-        
+
         return (
             <Provider store={store}>
-                    <Router/>
+                <Router/>
             </Provider>
         );
     }
