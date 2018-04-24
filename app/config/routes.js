@@ -19,6 +19,7 @@ import CharacterEdit from "../modules/characters/scenes/CharacterEdit/CharacterE
 
 //Workout Scenes
 import WorkoutList from '../modules/workouts/scenes/WorkoutList';
+import WorkoutDetail from "../modules/workouts/scenes/WorkoutDetail/WorkoutDetail";
 
 //Import Store, actions
 import store from '../redux/store'
@@ -77,6 +78,7 @@ export default class extends React.Component {
                             <Scene key="Profile" component={Profile} title="Profile" type={ActionConst.REPLACE}/>
                         </Scene>
                         <Scene key="CharacterEdit" component={CharacterEdit} title="Character"/>
+                        <Scene key="WorkoutDetail" component={WorkoutDetail}/>
                     </Stack>
                 </Scene>
             </Router>

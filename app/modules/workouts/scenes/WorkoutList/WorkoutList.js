@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, Image} from 'react-native';
+import {Text, View, Image, FlatList, TouchableOpacity} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
@@ -16,7 +16,9 @@ class WorkoutList extends React.Component {
         this.props.dispatch(fetchWorkouts()).then(() => {
 
             const keys = Object.keys(this.props.workouts);
-            const workouts = keys.map(key => this.props.workouts[key]);
+            const workouts = keys.map(key => {
+                return Object.assign({}, this.props.workouts[key], {key});
+            });
 
             this.setState({
                 isReady: true,
@@ -25,14 +27,19 @@ class WorkoutList extends React.Component {
         });
     }
 
-    __renderWorkout = (workout) => {
+    goToitem = (workout) => {
+        Actions.WorkoutDetail({workout});
+    };
+
+    renderWorkoutItem = ({item}) => {
         return (
-            <View key={workout.uid} style={styles.workout}>
+            <TouchableOpacity key={item.uid} style={styles.workout}
+                onPress={() => this.goToitem(item)}>
                 <View style={{flex: 1, flexDirection: 'row'}}>
-                    <Image style={styles.image} source={{uri: workout.image}}/>
-                    <Text style={styles.name}>{workout.name}</Text>
+                    <Image style={styles.image} source={{uri: item.image}}/>
+                    <Text style={styles.name}>{item.name}</Text>
                 </View>
-            </View>
+            </TouchableOpacity>
         )
     };
 
@@ -43,9 +50,10 @@ class WorkoutList extends React.Component {
 
         return (
             <View style={styles.container}>
-                {
-                    this.state.workouts.map(this.__renderWorkout)
-                }
+                <FlatList
+                    data={this.state.workouts}
+                    renderItem={this.renderWorkoutItem}
+                />
             </View>
         );
     }
