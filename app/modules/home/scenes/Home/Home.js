@@ -1,53 +1,47 @@
 import React from 'react';
-
-import {View, StyleSheet, Alert} from 'react-native';
-
+import {Text, View, StyleSheet, Alert, ImageBackground, Image} from 'react-native';
 import {Button} from 'react-native-elements'
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
-import styles from "./styles"
-
-import {actions as auth, theme} from "../../../auth/index"
-
-const {signOut} = auth;
-
-const {color} = theme;
+import styles from "./styles";
+import {fetchMyCharacter} from "../../../characters/actions";
+import MountainsBackground from '../../../../assets/images/mountains.png';
 
 class Home extends React.Component {
-    constructor() {
-        super();
-        this.state = {};
+    state = {
+        isReady: false,
+    };
 
-        this.onSignOut = this.onSignOut.bind(this);
-    }
-
-    onSignOut() {
-        this.props.signOut(this.onSuccess.bind(this), this.onError.bind(this))
-    }
-
-    onSuccess() {
-        Actions.reset("Auth")
-    }
-
-    onError(error) {
-        Alert.alert('Oops!', error.message);
+    componentWillMount() {
+        this.props.dispatch(fetchMyCharacter(this.props.user, () => {
+            this.setState({isReady: true});
+        }));
     }
 
     render() {
+        const {character} = this.props;
+
+        if (!this.state.isReady) {
+            return null;
+        }
+
         return (
-            <View style={styles.container}>
-                <Button
-                    raised
-                    borderRadius={4}
-                    title={'LOG OUT'}
-                    containerViewStyle={[styles.containerView]}
-                    buttonStyle={[styles.button]}
-                    textStyle={styles.buttonText}
-                    onPress={this.onSignOut}/>
-            </View>
+            <ImageBackground source={MountainsBackground} style={styles.imageBackground}>
+                <View style={styles.container}>
+                    {/*<Image source={}/>*/}
+                    <Text>{character.name}</Text>
+                </View>
+            </ImageBackground>
         );
     }
 }
 
-export default connect(null, {signOut})(Home);
+function mapStateToProps(state) {
+    return {
+        user: state.authReducer.user,
+        character: state.characterReducer.character
+    }
+}
+
+export default connect(mapStateToProps)(Home);

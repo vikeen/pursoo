@@ -2,28 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="547c6828-634a-4686-90bc-af4e90a8d8ba" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/modules/profile/actionTypes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/profile/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/profile/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/profile/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/profile/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/profile/reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/profile/scenes/Profile/Profile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/profile/scenes/Profile/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/profile/scenes/Profile/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/characters/actionTypes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/characters/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/characters/api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/characters/constants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/characters/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/characters/reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/auth/components/AuthTextInput/AuthTextInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/auth/components/AuthTextInput/AuthTextInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/auth/components/AuthTextInput/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/auth/components/AuthTextInput/styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/auth/components/Form/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Form/Form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/auth/components/Form/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Form/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/auth/components/Form/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Form/styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/auth/scenes/CompleteProfile/CompleteProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/auth/scenes/CompleteProfile/CompleteProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/auth/scenes/ForgotPassword/ForgotPassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/auth/scenes/ForgotPassword/ForgotPassword.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/auth/scenes/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/auth/scenes/Login/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/auth/scenes/Register/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/auth/scenes/Register/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/auth/utils/validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/auth/utils/validate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/home/scenes/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/home/scenes/Home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/home/scenes/Home/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/home/scenes/Home/styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/redux/rootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/redux/rootReducer.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -37,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Profile.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/modules/profile/scenes/Profile/Profile.js">
+      <file leaf-file-name="Home.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/modules/home/scenes/Home/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="44" column="23" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
+            <state relative-caret-position="420">
+              <caret line="28" column="16" lean-forward="true" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -49,23 +37,59 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="styles.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/modules/profile/scenes/Profile/styles.js">
+      <file leaf-file-name="actions.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/modules/characters/actions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+            <state relative-caret-position="45">
+              <caret line="3" column="57" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="57" />
               <folding>
-                <element signature="e#0#40#0" expanded="true" />
+                <element signature="e#0#29#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="actions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/modules/profile/actions.js">
+      <file leaf-file-name="reducer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/modules/characters/reducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="135">
+              <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rootReducer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/redux/rootReducer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reducer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/modules/auth/reducer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="actionTypes.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/modules/characters/actionTypes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="29" selection-start-column="13" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -76,7 +100,6 @@
     <findStrings>
       <find>action</find>
       <find>register</find>
-      <find>console.log</find>
       <find>&quot;#FF553F&quot;</find>
       <find>theme.color</find>
       <find>theme</find>
@@ -88,9 +111,15 @@
       <find>fields</find>
       <find>user</find>
       <find>updateUser</find>
+      <find>image</find>
+      <find>state.</find>
+      <find>this.state.isReady</find>
+      <find>auth</find>
+      <find>console.log</find>
     </findStrings>
     <replaceStrings>
       <replace>theme.color.brandPrimary</replace>
+      <replace>character</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/app/modules</dir>
@@ -111,9 +140,7 @@
         <option value="$PROJECT_DIR$/app/styles/theme.js" />
         <option value="$PROJECT_DIR$/app/modules/auth/reducer.js" />
         <option value="$PROJECT_DIR$/app/modules/auth/scenes/ForgotPassword/ForgotPassword.js" />
-        <option value="$PROJECT_DIR$/app/modules/home/scenes/Home/styles.js" />
         <option value="$PROJECT_DIR$/app/modules/home/index.js" />
-        <option value="$PROJECT_DIR$/app/redux/rootReducer.js" />
         <option value="$PROJECT_DIR$/app/redux/store.js" />
         <option value="$PROJECT_DIR$/App.js" />
         <option value="$PROJECT_DIR$/app/modules/auth/components/Form/styles.js" />
@@ -122,9 +149,7 @@
         <option value="$PROJECT_DIR$/app/components/Splash/Splash.js" />
         <option value="$PROJECT_DIR$/app/components/Splash/styles.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/app/modules/home/scenes/Home/Home.js" />
         <option value="$PROJECT_DIR$/app/modules/profile/scenes/Profile/index.js" />
-        <option value="$PROJECT_DIR$/app/config/routes.js" />
         <option value="$PROJECT_DIR$/app/modules/auth/components/AuthTextInput/styles.js" />
         <option value="$PROJECT_DIR$/app/modules/auth/components/AuthTextInput/AuthTextInput.js" />
         <option value="$PROJECT_DIR$/app/modules/auth/scenes/CompleteProfile/CompleteProfile.js" />
@@ -134,6 +159,15 @@
         <option value="$PROJECT_DIR$/app/modules/profile/api.js" />
         <option value="$PROJECT_DIR$/app/modules/profile/scenes/Profile/styles.js" />
         <option value="$PROJECT_DIR$/app/modules/profile/scenes/Profile/Profile.js" />
+        <option value="$PROJECT_DIR$/app/modules/home/scenes/Home/styles.js" />
+        <option value="$PROJECT_DIR$/app/modules/characters/scenes/Profile/Character.js" />
+        <option value="$PROJECT_DIR$/app/config/routes.js" />
+        <option value="$PROJECT_DIR$/app/modules/characters/actionTypes.js" />
+        <option value="$PROJECT_DIR$/app/redux/rootReducer.js" />
+        <option value="$PROJECT_DIR$/app/modules/characters/api.js" />
+        <option value="$PROJECT_DIR$/app/modules/characters/reducer.js" />
+        <option value="$PROJECT_DIR$/app/modules/characters/actions.js" />
+        <option value="$PROJECT_DIR$/app/modules/home/scenes/Home/Home.js" />
       </list>
     </option>
   </component>
@@ -183,6 +217,27 @@
               <item name="FitnessQuestReactNative" type="b2602c69:ProjectViewProjectNode" />
               <item name="FitnessQuestReactNative" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FitnessQuestReactNative" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FitnessQuestReactNative" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FitnessQuestReactNative" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FitnessQuestReactNative" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FitnessQuestReactNative" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FitnessQuestReactNative" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="characters" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FitnessQuestReactNative" type="b2602c69:ProjectViewProjectNode" />
@@ -299,14 +354,21 @@
               <item name="FitnessQuestReactNative" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="profile" type="462c0819:PsiDirectoryNode" />
+              <item name="characters" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FitnessQuestReactNative" type="b2602c69:ProjectViewProjectNode" />
               <item name="FitnessQuestReactNative" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="profile" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FitnessQuestReactNative" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FitnessQuestReactNative" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
               <item name="scenes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -314,9 +376,16 @@
               <item name="FitnessQuestReactNative" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="profile" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
               <item name="scenes" type="462c0819:PsiDirectoryNode" />
-              <item name="Profile" type="462c0819:PsiDirectoryNode" />
+              <item name="Home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FitnessQuestReactNative" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FitnessQuestReactNative" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="profile" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FitnessQuestReactNative" type="b2602c69:ProjectViewProjectNode" />
@@ -347,9 +416,12 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/modules/characters" />
       <recent name="$PROJECT_DIR$/app/components" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/modules/characters/scenes" />
+      <recent name="$PROJECT_DIR$/app/modules/characters" />
       <recent name="$PROJECT_DIR$/app/modules/profile" />
       <recent name="$PROJECT_DIR$/app/assets/images" />
       <recent name="$PROJECT_DIR$/app/assets/images/characters" />
@@ -380,12 +452,12 @@
       <workItem from="1524509418172" duration="131000" />
       <workItem from="1524509559762" duration="68000" />
       <workItem from="1524509650963" duration="2978000" />
-      <workItem from="1524513023234" duration="6139000" />
+      <workItem from="1524513023234" duration="8969000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9316000" />
+    <option name="totallyTimeSpent" value="12146000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -419,75 +491,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/modules/auth/scenes/ForgotPassword/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/auth/scenes/CompleteProfile/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/Form/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/auth/scenes/ForgotPassword/ForgotPassword.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="47" column="40" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/auth/scenes/Login/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/auth/actionTypes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="44" lean-forward="true" selection-start-line="1" selection-start-column="44" selection-end-line="1" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/auth/constants.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="57" lean-forward="true" selection-start-column="57" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/home/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="14" selection-end-line="7" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/home/constants.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/home/api.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/home/actionTypes.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/home/scenes/Home/styles.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="22" lean-forward="true" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/modules/home/scenes/Home/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -555,16 +558,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/redux/rootReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="19" selection-end-line="11" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/components/Form/styles.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
@@ -606,16 +599,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/home/scenes/Home/Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="51" lean-forward="true" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/modules/home/reducer.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -649,17 +632,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/modules/auth/components/AuthTextInput/index.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="53" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
-          <folding>
-            <element signature="e#252#305#0" expanded="true" />
-            <element signature="e#623#657#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/styles/theme.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -715,37 +687,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/auth/api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="45" column="25" lean-forward="true" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/modules/auth/scenes/CompleteProfile/CompleteProfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/auth/reducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/auth/actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -766,10 +711,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/profile/actions.js">
+    <entry file="file://$PROJECT_DIR$/app/modules/profile/scenes/Profile/Profile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="79">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -783,10 +731,148 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/profile/scenes/Profile/Profile.js">
+    <entry file="file://$PROJECT_DIR$/app/modules/characters/scenes/Character/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/characters/scenes/Character/styles.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="44" column="23" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
+        <state>
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/characters/scenes/Character/Character.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/characters/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/characters/constants.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/profile/actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/home/scenes/Home/styles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/images/characters/elf-male-fighter.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/auth/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="45" column="25" lean-forward="true" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/auth/actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/auth/actionTypes.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/characters/actionTypes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="29" selection-start-column="13" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/auth/reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="41" column="57" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#252#305#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/characters/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/redux/rootReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/characters/reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/characters/actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="57" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/home/scenes/Home/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="16" lean-forward="true" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

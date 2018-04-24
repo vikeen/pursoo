@@ -1,0 +1,1 @@
+export const CHARACTER_LOADED = "CHARACTER_LOADED";
