@@ -1,0 +1,1 @@
+export const WORKOUTS_LOADED = "WORKOUTS_LOADED";
