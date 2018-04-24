@@ -11,14 +11,18 @@ import Register from '../modules/auth/scenes/Register';
 import CompleteProfile from '../modules/auth/scenes/CompleteProfile';
 import Login from '../modules/auth/scenes/Login';
 import ForgotPassword from '../modules/auth/scenes/ForgotPassword';
-import Home from '../modules/home/scenes/Home';
 import Profile from "../modules/profile/scenes/Profile/Profile";
+
+//Character Scenes
+import Home from '../modules/home/scenes/Home';
+import CharacterEdit from "../modules/characters/scenes/CharacterEdit/CharacterEdit";
 
 //Import Store, actions
 import store from '../redux/store'
 import {checkLoginStatus} from "../modules/auth/actions";
 
 import {color, navTitleStyle} from "../styles/theme";
+
 
 
 let tabBarStyle = StyleSheet.create({
@@ -57,17 +61,18 @@ export default class extends React.Component {
                        backButtonTintColor={color.black}>
                     <Stack key="Auth" initial={!this.state.isLoggedIn}>
                         <Scene key="Welcome" component={Welcome} title="" initial={true} hideNavBar/>
-                        <Scene key="Register" component={Register} title="Register" back/>
+                        <Scene key="Register" component={Register} title="Register"/>
                         <Scene key="CompleteProfile" component={CompleteProfile} title="Select Username"/>
                         <Scene key="Login" component={Login} title="Login"/>
                         <Scene key="ForgotPassword" component={ForgotPassword} title="Forgot Password"/>
                     </Stack>
 
                     <Stack key="Main" initial={this.state.isLoggedIn}>
-                        <Scene key='MainRoot' tabs={true} tabBarStyle={tabBarStyle.container}>
+                        <Scene key='MainTabBar' tabs={true} tabBarStyle={tabBarStyle.container}>
                             <Scene key="Home" component={Home} title="Home" initial={true} type={ActionConst.REPLACE}/>
                             <Scene key="Profile" component={Profile} title="Profile" type={ActionConst.REPLACE}/>
                         </Scene>
+                        <Scene key="CharacterEdit" component={CharacterEdit} title="CharacterEdit"/>
                     </Stack>
                 </Scene>
             </Router>

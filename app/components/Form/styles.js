@@ -1,7 +1,8 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
-import { theme } from "../../modules/auth/index"
-const  { color, padding, windowWidth, normalize, fontSize, fontFamily } = theme;
+import {theme} from "../../modules/auth/index"
+
+const {color, padding, windowWidth, normalize, fontSize, fontFamily} = theme;
 
 const styles = StyleSheet.create({
     container: {
@@ -9,42 +10,42 @@ const styles = StyleSheet.create({
         backgroundColor: color.white,
     },
 
-    wrapper:{
-        justifyContent:"center",
-        alignItems:"center"
+    wrapper: {
+        justifyContent: "center",
+        alignItems: "center"
     },
 
-    errorText:{
+    errorText: {
         color: color.red,
         width: (windowWidth - 45),
         marginTop: 20,
     },
 
-    containerView:{
+    containerView: {
         marginVertical: padding * 3,
         width: windowWidth - 40
     },
 
-    socialButton:{
+    socialButton: {
         height: normalize(55),
-        borderRadius:4,
-        marginTop:0,
-        marginBottom:0
+        borderRadius: 4,
+        marginTop: 0,
+        marginBottom: 0
     },
 
-    button:{
+    button: {
         backgroundColor: color.brandPrimary,
         height: normalize(55)
     },
 
-    buttonText:{
+    buttonText: {
         fontSize: fontSize.regular + 2,
         fontFamily: fontFamily.medium
     },
 
-    forgotText:{
-        textAlign:"center",
-        color:color.black,
+    forgotText: {
+        textAlign: "center",
+        color: color.black,
         marginBottom: padding,
         fontSize: fontSize.regular,
         fontFamily: fontFamily.medium,

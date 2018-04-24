@@ -7,8 +7,9 @@ let initialState = {character: null};
 const characterReducer = (state = initialState, action) => {
     switch (action.type) {
         case t.CHARACTER_LOADED:
-            state = Object.assign({}, state, {character: action.data});
-            return state;
+            return Object.assign({}, state, {character: action.character});
+        case t.CHARACTER_UPDATED:
+            return Object.assign({}, state, {character: action.character});
         default:
             return state;
     }

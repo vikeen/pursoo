@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet, Alert, ImageBackground, Image} from 'react-native';
+import {Text, View, StyleSheet, Alert, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import {Button} from 'react-native-elements'
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
@@ -14,10 +14,19 @@ class Home extends React.Component {
     };
 
     componentWillMount() {
-        this.props.dispatch(fetchMyCharacter(this.props.user, () => {
+        this.props.navigation.setParams({
+            rightTitle: 'Edit',
+            onRight: this.handleNavEditTouch
+        });
+
+        this.props.dispatch(fetchMyCharacter(this.props.user)).then(() => {
             this.setState({isReady: true});
-        }));
+        });
     }
+
+    handleNavEditTouch = () => {
+        Actions.CharacterEdit();
+    };
 
     render() {
         const {character} = this.props;
@@ -29,7 +38,6 @@ class Home extends React.Component {
         return (
             <ImageBackground source={MountainsBackground} style={styles.imageBackground}>
                 <View style={styles.container}>
-                    {/*<Image source={}/>*/}
                     <Text>{character.name}</Text>
                 </View>
             </ImageBackground>

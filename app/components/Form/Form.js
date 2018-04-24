@@ -14,7 +14,7 @@ class Form extends React.Component {
     constructor(props) {
         super(props);
 
-        const { fields, error } = props;
+        const {fields, error} = props;
 
         this.state = this.createState(fields, error);
 
@@ -29,7 +29,7 @@ class Form extends React.Component {
         fields.forEach((field) => {
             let {key, type, value} = field;
             state[key] = {type: type, value: value};
-        })
+        });
 
         state["error"] = error;
         return state;
@@ -63,7 +63,7 @@ class Form extends React.Component {
     }
 
     render() {
-        const { fields, showLabel, buttonTitle, onForgotPassword} = this.props;
+        const {fields, showLabel, buttonTitle, onForgotPassword} = this.props;
 
         return (
             <View style={styles.container}>

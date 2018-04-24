@@ -56,7 +56,7 @@ class Profile extends React.Component {
     onProfileSubmit = (data) => {
         this.setState({error: error}); //clear out error messages
 
-        const user = Object.assign(this.props.user, data);
+        const user = Object.assign({}, this.props.user, data);
 
         this.props.dispatch(updateUser(user, this.onProfileSuccess, this.onProfileError));
     };
