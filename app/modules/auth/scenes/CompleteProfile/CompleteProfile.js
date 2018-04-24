@@ -6,7 +6,7 @@ import {actions as auth} from "../../index"
 
 const {createUser} = auth;
 
-import Form from "../../components/Form"
+import Form from "../../../../components/Form"
 
 const fields = [
     {

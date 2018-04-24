@@ -3,11 +3,11 @@ import React from 'react';
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
-import {actions as auth} from "../../index"
+import {actions as auth} from "../../index";
 
 const {register} = auth;
 
-import Form from "../../components/Form"
+import Form from "../../../../components/Form"
 
 const fields = [
     {

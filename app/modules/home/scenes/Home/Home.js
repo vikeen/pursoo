@@ -1,6 +1,6 @@
 import React from 'react';
 
-var {View, StyleSheet, Alert} = require('react-native');
+import {View, StyleSheet, Alert} from 'react-native';
 
 import {Button} from 'react-native-elements'
 import {Actions} from 'react-native-router-flux';

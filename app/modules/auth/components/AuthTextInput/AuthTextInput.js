@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'
 
-import { View } from 'react-native';
+import {View} from 'react-native';
 
-import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
-import { isEmpty } from '../../utils/validate'
+import {FormLabel, FormInput, FormValidationMessage} from 'react-native-elements';
+import {isEmpty} from '../../utils/validate';
 import styles from "./styles"
 
 class AuthTextInput extends Component {
     render() {
-        const { showLabel, placeholder, autoFocus, onChangeText, secureTextEntry } = this.props;
+        const {showLabel, placeholder, autoFocus, onChangeText, secureTextEntry} = this.props;
 
         return (
             <View style={styles.container}>
@@ -50,11 +50,11 @@ AuthTextInput.propTypes = {
     secureTextEntry: PropTypes.bool,
     value: PropTypes.string,
     error: PropTypes.string,
-}
+};
 
 AuthTextInput.defaultProps = {
     autoFocus: false,
     secureTextEntry: false
-}
+};
 
 export default AuthTextInput;

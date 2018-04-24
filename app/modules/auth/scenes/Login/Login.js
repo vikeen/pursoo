@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 import {actions as auth} from "../../index"
 
-import Form from "../../components/Form"
+import Form from "../../../../components/Form"
 
 const {login} = auth;
 

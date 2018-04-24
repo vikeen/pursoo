@@ -7,7 +7,7 @@ import {actions as auth} from "../../index"
 
 const {resetPassword} = auth;
 
-import Form from "../../components/Form"
+import Form from "../../../../components/Form"
 
 const fields = [
     {

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { theme } from "../../index"
+import { theme } from "../../modules/auth/index"
 const  { color, padding, windowWidth, normalize, fontSize, fontFamily } = theme;
 
 const styles = StyleSheet.create({
