@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, ImageBackground, Image} from 'react-native';
+import {Text, View, Image} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
@@ -25,6 +25,17 @@ class WorkoutList extends React.Component {
         });
     }
 
+    __renderWorkout = (workout) => {
+        return (
+            <View key={workout.uid} style={styles.workout}>
+                <View style={{flex: 1, flexDirection: 'row'}}>
+                    <Image style={styles.image} source={{uri: workout.image}}/>
+                    <Text style={styles.name}>{workout.name}</Text>
+                </View>
+            </View>
+        )
+    };
+
     render() {
         if (!this.state.isReady) {
             return null;
@@ -33,11 +44,7 @@ class WorkoutList extends React.Component {
         return (
             <View style={styles.container}>
                 {
-                    this.state.workouts.map(workout => {
-                        return <View key={workout.uid} style={styles.workout}>
-                            <Text>{workout.name}</Text>
-                        </View>
-                    })
+                    this.state.workouts.map(this.__renderWorkout)
                 }
             </View>
         );
