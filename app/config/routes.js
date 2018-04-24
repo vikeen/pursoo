@@ -69,10 +69,10 @@ export default class extends React.Component {
 
                     <Stack key="Main" initial={this.state.isLoggedIn}>
                         <Scene key='MainTabBar' tabs={true} tabBarStyle={tabBarStyle.container}>
-                            <Scene key="Home" component={Home} title="Home" initial={true} type={ActionConst.REPLACE}/>
+                            <Scene key="Home" component={Home} initial={true} type={ActionConst.REPLACE}/>
                             <Scene key="Profile" component={Profile} title="Profile" type={ActionConst.REPLACE}/>
                         </Scene>
-                        <Scene key="CharacterEdit" component={CharacterEdit} title="CharacterEdit"/>
+                        <Scene key="CharacterEdit" component={CharacterEdit} title="Character"/>
                     </Stack>
                 </Scene>
             </Router>

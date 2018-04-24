@@ -1,6 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet, Alert, ImageBackground, Image, TouchableOpacity} from 'react-native';
-import {Button} from 'react-native-elements'
+import {Text, View, ImageBackground, Image} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
@@ -20,7 +19,9 @@ class Home extends React.Component {
         });
 
         this.props.dispatch(fetchMyCharacter(this.props.user)).then(() => {
-            this.setState({isReady: true});
+            this.setState({
+                isReady: true,
+            });
         });
     }
 
@@ -38,7 +39,19 @@ class Home extends React.Component {
         return (
             <ImageBackground source={MountainsBackground} style={styles.imageBackground}>
                 <View style={styles.container}>
-                    <Text>{character.name}</Text>
+                    <Image source={{uri: character.image}} style={styles.characterImage}/>
+                    <Text style={styles.name} numberOfLines={1} ellipsizeMode="tail">
+                        {character.name}
+                    </Text>
+                    <Text style={styles.level}>Level {character.level}</Text>
+                    <View style={styles.xpContainer}>
+                        <View style={styles.xpBarContainer}/>
+                        <View style={styles.xpBar}/>
+                        <View style={styles.xpTextContainer}>
+                            <Text>Experience</Text>
+                            <Text>{character.xp} / 250</Text>
+                        </View>
+                    </View>
                 </View>
             </ImageBackground>
         );

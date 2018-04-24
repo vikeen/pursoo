@@ -29,7 +29,7 @@ class CharacterEdit extends React.Component {
         const {character} = this.state;
 
         this.props.dispatch(updateCharacter(character)).then(() => {
-            this.dropdown.alertWithType('success', 'Character Saved', "");
+            this.props.navigation.goBack();
         }).catch(() => {
             this.dropdown.alertWithType('error', 'Oops! Something got messed up', "");
         });
