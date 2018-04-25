@@ -36,14 +36,19 @@ export const getMyWorkoutHistory = (user, limit = 5) => {
 
         workoutHistoryRef.once("value")
             .then(snapshot => {
-                const workoutHistoryByUid = snapshot.val();
-                const keys = Object.keys(snapshot.val());
+                const exists = (snapshot.val() !== null);
 
-                const workoutHistory = keys.map(key => {
-                    return workoutHistoryByUid[key];
-                });
+                if (exists) {
+                    const workoutHistoryByUid = snapshot.val();
+                    const keys = Object.keys(snapshot.val());
 
-                resolve(workoutHistory);
+                    const workoutHistory = keys.map(key => {
+                        return workoutHistoryByUid[key];
+                    });
+                    resolve(workoutHistory);
+                } else {
+                    resolve([]);
+                }
             })
             .catch((error) => reject({message: error}));
     });

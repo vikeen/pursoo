@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, ImageBackground, Image, StyleSheet, FlatList} from 'react-native';
+import {Text, ScrollView, View, ImageBackground, Image, StyleSheet} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
@@ -75,7 +75,7 @@ class Home extends React.Component {
 
         return (
             <ImageBackground source={MountainsBackground} style={styles.imageBackground}>
-                <View style={styles.container}>
+                <ScrollView contentContainerStyle={styles.container}>
                     <Image source={{uri: character.image}} style={styles.characterImage}/>
                     <Text style={styles.name} numberOfLines={1} ellipsizeMode="tail">
                         {character.name}
@@ -90,7 +90,7 @@ class Home extends React.Component {
                         </View>
                     </View>
                     {this.renderWorkoutHistory()}
-                </View>
+                </ScrollView>
             </ImageBackground>
         );
     }
