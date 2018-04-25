@@ -27,6 +27,28 @@ export const createWorkoutHistory = (workoutHistory) => {
     });
 };
 
+export const getMyWorkoutHistory = (user, limit = 5) => {
+    return new Promise((resolve, reject) => {
+        const workoutHistoryRef = database.ref('workoutHistory')
+            .orderByChild("addedByUser")
+            .equalTo(user.uid)
+            .limitToLast(limit);
+
+        workoutHistoryRef.once("value")
+            .then(snapshot => {
+                const workoutHistoryByUid = snapshot.val();
+                const keys = Object.keys(snapshot.val());
+
+                const workoutHistory = keys.map(key => {
+                    return workoutHistoryByUid[key];
+                });
+
+                resolve(workoutHistory);
+            })
+            .catch((error) => reject({message: error}));
+    });
+};
+
 function __fetchWorkouts() {
     return new Promise((resolve, reject) => {
         database.ref('workouts').once("value")

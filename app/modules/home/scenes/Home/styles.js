@@ -13,12 +13,13 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%'
     },
+
     container: {
         flex: 1,
         flexDirection: 'column',
         padding: padding,
         justifyContent: 'flex-start',
-        alignItems: 'center'
+        alignItems: 'center',
     },
 
     characterImage: {
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
     xpContainer: {
         flex: 1,
         flexDirection: 'column',
-        width: xpBarWidth
+        width: xpBarWidth,
     },
 
     xpBarContainer: {
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
         width: '100%',
         borderWidth: 2,
         borderColor: color.black,
-        marginBottom: -xpBarHeight
+        marginBottom: -xpBarHeight,
     },
 
     xpBar: {
@@ -64,6 +65,44 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between'
+    },
+
+    // recent workouts
+
+    recentWorkoutsContainer: {
+        flex: 2,
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        width: '100%',
+        marginTop: 10
+    },
+
+    recentWorkoutsTitle: {
+        fontSize: fontSize.large,
+        fontFamily: fontFamily.regular
+    },
+
+    workout: {
+        width: '100%',
+        backgroundColor: color.white,
+        marginBottom: padding,
+        height: 50,
+        borderWidth: 1,
+        borderColor: color.grey,
+        borderRadius: 5
+    },
+
+    workoutImage: {
+        width: 70,
+        resizeMode: 'cover',
+        marginRight: padding
+    },
+
+    workoutName: {
+        marginTop: 3,
+        fontSize: fontSize.regular,
+        fontFamily: fontFamily.regular
     }
 });
 

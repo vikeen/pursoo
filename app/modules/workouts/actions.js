@@ -14,8 +14,14 @@ export const createWorkoutHistory = (user, workout) => {
     const workoutHistory = new WorkoutHistory(user, workout).toJSON();
 
     return (dispatch) => {
-        return api.createWorkoutHistory(workoutHistory).then(() => {
-            // dispatch({type: t.WORKOUTS_LOADED, workouts});
+        return api.createWorkoutHistory(workoutHistory);
+    };
+};
+
+export const getMyWorkoutHistory = (user) => {
+    return (dispatch) => {
+        return api.getMyWorkoutHistory(user).then(workoutHistory => {
+            dispatch({type: t.WORKOUT_HISTORY_LOADED, workoutHistory})
         });
     };
 };
