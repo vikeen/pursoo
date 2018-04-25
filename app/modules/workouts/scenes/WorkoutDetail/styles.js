@@ -1,35 +1,97 @@
 import {StyleSheet} from 'react-native';
 import {theme} from "../../index"
 
-const {padding, color, fontFamily, fontSize} = theme;
+const {padding, color, fontFamily, normalize, fontSize, windowWidth} = theme;
+
+const cellWidth = 60;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        padding: padding
+        padding: padding,
+        backgroundColor: color.white
     },
 
-    workout: {
-        width: '100%',
-        backgroundColor: color.white,
-        marginBottom: padding,
-        height: 75,
-        borderWidth: 1,
-        borderColor: color.grey,
-        borderRadius: 5
+    title: {
+        fontSize: fontSize.large,
+        fontFamily: fontFamily.medium
     },
 
-    image: {
-        width: 100, // 4:3
-        resizeMode: 'cover',
-        marginRight: padding
+    containerView: {
+        marginVertical: padding * 3,
+        width: windowWidth - 40 - padding
     },
 
-    name: {
-        marginTop: padding,
-        fontSize: fontSize.regular,
-        fontFamily: fontFamily.regular
+    button: {
+        backgroundColor: color.brandPrimary,
+        height: normalize(55),
+    },
+
+    buttonText: {
+        fontSize: fontSize.regular + 2,
+        fontFamily: fontFamily.medium
+    },
+
+    exerciseNameLabel: {
+        flex: 1,
+        fontSize: fontSize.small
+    },
+
+    exerciseName: {
+        flex: 1
+    },
+
+    exerciseRepsLabel: {
+        width: cellWidth,
+        textAlign: 'right',
+        fontSize: fontSize.small
+    },
+
+    exerciseReps: {
+        width: cellWidth,
+        textAlign: 'right'
+    },
+
+    exerciseRewardLabel: {
+        width: cellWidth + 20,
+        textAlign: 'right',
+        fontSize: fontSize.small
+    },
+
+    exerciseReward: {
+        width: cellWidth + 20,
+        textAlign: 'right'
+    },
+
+    exerciseSetsLabel: {
+        width: cellWidth,
+        textAlign: 'right'
+    },
+
+    exerciseSets: {
+        width: cellWidth,
+        textAlign: 'right'
+    },
+
+    exerciseRoutineContainer: {
+        marginTop: 40
+    },
+
+    exerciseRowHeader: {
+        flex: 0,
+        flexDirection: 'row',
+        padding: padding,
+        borderBottomWidth: 1,
+        borderBottomColor: color.light_grey
+    },
+
+    exerciseRow: {
+        flex: 1,
+        flexDirection: 'row',
+        padding: padding,
+        borderBottomWidth: 1,
+        borderBottomColor: color.light_grey
     }
 });
 

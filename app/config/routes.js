@@ -11,15 +11,16 @@ import Register from '../modules/auth/scenes/Register';
 import CompleteProfile from '../modules/auth/scenes/CompleteProfile';
 import Login from '../modules/auth/scenes/Login';
 import ForgotPassword from '../modules/auth/scenes/ForgotPassword';
-import Profile from "../modules/profile/scenes/Profile/Profile";
+import Profile from "../modules/profile/scenes/Profile";
 
 //Character Scenes
 import Home from '../modules/home/scenes/Home';
-import CharacterEdit from "../modules/characters/scenes/CharacterEdit/CharacterEdit";
+import CharacterEdit from "../modules/characters/scenes/CharacterEdit";
 
 //Workout Scenes
 import WorkoutList from '../modules/workouts/scenes/WorkoutList';
-import WorkoutDetail from "../modules/workouts/scenes/WorkoutDetail/WorkoutDetail";
+import WorkoutDetail from "../modules/workouts/scenes/WorkoutDetail";
+import WorkoutRoutine from "../modules/workouts/scenes/WorkoutRoutine";
 
 //Import Store, actions
 import store from '../redux/store'
@@ -73,12 +74,13 @@ export default class extends React.Component {
 
                     <Stack key="Main" initial={this.state.isLoggedIn}>
                         <Scene key='MainTabBar' tabs={true} tabBarStyle={tabBarStyle.container}>
-                            <Scene key="Home" component={Home} type={ActionConst.REPLACE}/>
-                            <Scene key="WorkoutList" component={WorkoutList} initial={true} title="Workouts" type={ActionConst.REPLACE}/>
+                            <Scene key="Home" component={Home} initial={true} type={ActionConst.REPLACE}/>
+                            <Scene key="WorkoutList" component={WorkoutList} title="Workouts" type={ActionConst.REPLACE}/>
                             <Scene key="Profile" component={Profile} title="Profile" type={ActionConst.REPLACE}/>
                         </Scene>
                         <Scene key="CharacterEdit" component={CharacterEdit} title="Character"/>
                         <Scene key="WorkoutDetail" component={WorkoutDetail}/>
+                        <Scene key="WorkoutRoutine" component={WorkoutRoutine}/>
                     </Stack>
                 </Scene>
             </Router>

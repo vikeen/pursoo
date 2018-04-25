@@ -14,15 +14,8 @@ class WorkoutList extends React.Component {
 
     componentDidMount() {
         this.props.dispatch(fetchWorkouts()).then(() => {
-
-            const keys = Object.keys(this.props.workouts);
-            const workouts = keys.map(key => {
-                return Object.assign({}, this.props.workouts[key], {key});
-            });
-
             this.setState({
-                isReady: true,
-                workouts
+                isReady: true
             });
         });
     }
@@ -34,10 +27,14 @@ class WorkoutList extends React.Component {
     renderWorkoutItem = ({item}) => {
         return (
             <TouchableOpacity key={item.uid} style={styles.workout}
-                onPress={() => this.goToitem(item)}>
+                              onPress={() => this.goToitem(item)}>
                 <View style={{flex: 1, flexDirection: 'row'}}>
                     <Image style={styles.image} source={{uri: item.image}}/>
-                    <Text style={styles.name}>{item.name}</Text>
+                    <View style={{flex: 1, flexDirection: "column"}}>
+                        <Text style={styles.name}>{item.name}</Text>
+                        <Text style={styles.name}>{item.difficulty}</Text>
+                        <Text style={styles.name}>{item.xpString}</Text>
+                    </View>
                 </View>
             </TouchableOpacity>
         )
@@ -51,7 +48,8 @@ class WorkoutList extends React.Component {
         return (
             <View style={styles.container}>
                 <FlatList
-                    data={this.state.workouts}
+                    data={this.props.workouts}
+                    keyExtractor={(item) => item.uid}
                     renderItem={this.renderWorkoutItem}
                 />
             </View>
