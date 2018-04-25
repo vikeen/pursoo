@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Scene, Router, ActionConst, Stack, Modal, Tabs} from 'react-native-router-flux';
+import {Scene, Router, ActionConst, Stack, Modal, Tabs, Actions} from 'react-native-router-flux';
 
 //Splash Component
 import Splash from '../components/Splash/Splash';
@@ -21,6 +21,7 @@ import CharacterEdit from "../modules/characters/scenes/CharacterEdit";
 import WorkoutList from '../modules/workouts/scenes/WorkoutList';
 import WorkoutDetail from "../modules/workouts/scenes/WorkoutDetail";
 import WorkoutRoutine from "../modules/workouts/scenes/WorkoutRoutine";
+import WorkoutReward from "../modules/workouts/scenes/WorkoutReward";
 
 //Import Store, actions
 import store from '../redux/store'
@@ -72,15 +73,20 @@ export default class extends React.Component {
                         <Scene key="ForgotPassword" component={ForgotPassword} title="Forgot Password"/>
                     </Stack>
 
-                    <Stack key="Main" initial={this.state.isLoggedIn}>
-                        <Scene key='MainTabBar' tabs={true} tabBarStyle={tabBarStyle.container}>
+                    <Stack key="Main" initial={this.state.isLoggedIn} hideNavBar={true}>
+                        <Tabs key='MainTabBar' tabBarStyle={tabBarStyle.container}>
                             <Scene key="Home" component={Home} initial={true} type={ActionConst.REPLACE}/>
-                            <Scene key="WorkoutList" component={WorkoutList} initial={true} title="Workouts" type={ActionConst.REPLACE}/>
+                            <Stack key="Workout" initial={true}>
+                                <Scene key="WorkoutList" component={WorkoutList} initial={true} title="Workouts" type={ActionConst.REPLACE}/>
+                                <Scene key="WorkoutDetail" component={WorkoutDetail} hideTabBar/>
+                                <Scene key="WorkoutRoutine" component={WorkoutRoutine} hideTabBar/>
+                                <Scene key="WorkoutReward" component={WorkoutReward} hideNavBar/>
+                            </Stack>
+
                             <Scene key="Profile" component={Profile} title="Profile" type={ActionConst.REPLACE}/>
-                        </Scene>
-                        <Scene key="CharacterEdit" component={CharacterEdit} title="Character"/>
-                        <Scene key="WorkoutDetail" component={WorkoutDetail}/>
-                        <Scene key="WorkoutRoutine" component={WorkoutRoutine}/>
+                        </Tabs>
+
+                        <Scene key="CharacterEdit" component={CharacterEdit} hideNavBar={false} title="Character"/>
                     </Stack>
                 </Scene>
             </Router>

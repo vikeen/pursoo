@@ -21,7 +21,7 @@ class WorkoutList extends React.Component {
     }
 
     goToitem = (workout) => {
-        Actions.WorkoutDetail({workout});
+        return Actions.push("WorkoutDetail", {workout});
     };
 
     renderWorkoutItem = ({item}) => {

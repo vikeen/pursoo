@@ -20,7 +20,7 @@ class WorkoutDetail extends React.Component {
     }
 
     goToWorkoutRoutine = (workout) => {
-        return Actions.WorkoutRoutine({workout})
+        return Actions.push("WorkoutRoutine", {workout});
     };
 
     renderExerciseItem = ({item, index}) => {
