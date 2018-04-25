@@ -10,10 +10,6 @@ class WorkoutDetail extends React.Component {
     constructor(props) {
         super(props);
 
-        props.navigation.setParams({
-            title: props.workout.name,
-        });
-
         this.state = {
             isReady: false
         };

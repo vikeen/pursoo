@@ -75,7 +75,7 @@ export default class extends React.Component {
                     <Stack key="Main" initial={this.state.isLoggedIn}>
                         <Scene key='MainTabBar' tabs={true} tabBarStyle={tabBarStyle.container}>
                             <Scene key="Home" component={Home} initial={true} type={ActionConst.REPLACE}/>
-                            <Scene key="WorkoutList" component={WorkoutList} title="Workouts" type={ActionConst.REPLACE}/>
+                            <Scene key="WorkoutList" component={WorkoutList} initial={true} title="Workouts" type={ActionConst.REPLACE}/>
                             <Scene key="Profile" component={Profile} title="Profile" type={ActionConst.REPLACE}/>
                         </Scene>
                         <Scene key="CharacterEdit" component={CharacterEdit} title="Character"/>
