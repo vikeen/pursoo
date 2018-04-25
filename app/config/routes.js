@@ -80,7 +80,7 @@ export default class extends React.Component {
                                 <Scene key="WorkoutList" component={WorkoutList} initial={true} title="Workouts" type={ActionConst.REPLACE}/>
                                 <Scene key="WorkoutDetail" component={WorkoutDetail} hideTabBar/>
                                 <Scene key="WorkoutRoutine" component={WorkoutRoutine} hideTabBar/>
-                                <Scene key="WorkoutReward" component={WorkoutReward} hideNavBar/>
+                                <Scene key="WorkoutReward" component={WorkoutReward} hideTabBar/>
                             </Stack>
 
                             <Scene key="Profile" component={Profile} title="Profile" type={ActionConst.REPLACE}/>

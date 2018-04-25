@@ -27,8 +27,6 @@ class WorkoutRoutine extends React.Component {
         const quantityCompleted = exercise.quantityCompleted || exercise.quantity;
         exercise = WorkoutExercise.complete(exercise, quantityCompleted);
 
-        console.log(exercise);
-
         const nextExercise = this.state.workout.exercises[exerciseIndex + 1];
 
         if (nextExercise) {
@@ -38,7 +36,6 @@ class WorkoutRoutine extends React.Component {
             });
         } else {
             workout = Workout.complete(workout);
-            console.log(workout);
             return Actions.push("WorkoutReward", {workout});
         }
     };
