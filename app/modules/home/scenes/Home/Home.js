@@ -1,11 +1,12 @@
 import React from 'react';
-import {Text, View, ImageBackground, Image} from 'react-native';
+import {Text, View, ImageBackground, Image, StyleSheet} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
 import styles from "./styles";
 import {fetchMyCharacter} from "../../../characters/actions";
 import MountainsBackground from '../../../../assets/images/mountains.png';
+import {Character} from "../../../characters/models";
 
 class Home extends React.Component {
     state = {
@@ -36,6 +37,9 @@ class Home extends React.Component {
             return null;
         }
 
+        const percentLevelComplete = Character.percentOfLevelComplete(character);
+        const xpBarStyles = StyleSheet.flatten([styles.xpBar, {width: `${percentLevelComplete}%`}]);
+
         return (
             <ImageBackground source={MountainsBackground} style={styles.imageBackground}>
                 <View style={styles.container}>
@@ -46,7 +50,7 @@ class Home extends React.Component {
                     <Text style={styles.level}>Level {character.level}</Text>
                     <View style={styles.xpContainer}>
                         <View style={styles.xpBarContainer}/>
-                        <View style={styles.xpBar}/>
+                        <View style={xpBarStyles}/>
                         <View style={styles.xpTextContainer}>
                             <Text>Experience</Text>
                             <Text>{character.xp} / 250</Text>

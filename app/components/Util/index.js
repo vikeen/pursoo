@@ -1,32 +1,11 @@
-export const createStore = (initialState) => {
-    let state = initialState || {};
-    const listeners = {};
-
-    const subscribeToItem = (key, callback) => {
-        listeners[key] = listeners[key] || [];
-        listeners[key].push(callback);
-    };
-
-    const unsubscribeFromItem = (key, callback) => {
-        listeners[key] = listeners[key].filter((listener) => listener !== callback);
-    };
-
-    const updateItem = (key, item) => {
-        state = {
-            ...state,
-            [key]: item,
-        };
-        if (listeners[key]) {
-            listeners[key].forEach((listener) => listener(state[key]));
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round
+export const round = (number, precision) => {
+    let shift = (number, precision, reverseShift) => {
+        if (reverseShift) {
+            precision = -precision;
         }
+        let numArray = ("" + number).split("e");
+        return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + precision) : precision));
     };
-
-    const getItem = (key) => state[key];
-
-    return {
-        subscribeToItem,
-        unsubscribeFromItem,
-        updateItem,
-        getItem,
-    };
+    return shift(Math.round(shift(number, precision, false)), precision, true);
 };

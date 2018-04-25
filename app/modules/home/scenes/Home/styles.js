@@ -57,8 +57,7 @@ const styles = StyleSheet.create({
 
     xpBar: {
         backgroundColor: '#674ea7',
-        height: xpBarHeight,
-        width: '50%',
+        height: xpBarHeight
     },
 
     xpTextContainer: {
