@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Text} from 'react-native-elements';
-import {View, Image, StyleSheet} from 'react-native';
+import {View, Image, StyleSheet, ScrollView} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
@@ -58,7 +58,7 @@ class WorkoutReward extends React.Component {
         const xpBarStyles = StyleSheet.flatten([styles.xpBar, {width: `${percentLevelComplete}%`}]);
 
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <View style={styles.banner}>
                     <Text style={styles.bannerTitle}>Workout Complete!</Text>
                 </View>
@@ -76,7 +76,7 @@ class WorkoutReward extends React.Component {
                         </View>
                     </View>
                 </View>
-            </View>
+            </ScrollView>
         );
     }
 }
