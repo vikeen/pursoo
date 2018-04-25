@@ -1,3 +1,5 @@
+import {stringifyXp} from "../../components/Util";
+
 export class Workout {
     constructor(workout, exercises) {
         workout.exercises = [];
@@ -10,7 +12,7 @@ export class Workout {
             workout.xp += workoutExercise.xp
         });
 
-        workout.xpString = __xpStringify(workout.xp);
+        workout.xpString = stringifyXp(workout.xp);
 
         return workout;
     }
@@ -22,7 +24,7 @@ export class Workout {
             workout.xpEarned += workoutExercise.xpEarned;
         });
 
-        workout.xpEarnedString = __xpStringify(workout.xpEarned);
+        workout.xpEarnedString = stringifyXp(workout.xpEarned);
         return workout;
     };
 }
@@ -35,20 +37,36 @@ export class WorkoutExercise {
         this.quantity = quantity;
         this.quantityCompleted = 0;
         this.xp = exercise.xp * quantity;
-        this.xpString = __xpStringify(exercise.xp);
+        this.xpString = stringifyXp(exercise.xp);
         this.xpEarned = 0;
-        this.xpEarnedString = __xpStringify(0);
+        this.xpEarnedString = stringifyXp(0);
         this.exercise = exercise;
     }
 
     static complete = (exercise, quantityCompleted) => {
         exercise.xpEarned = exercise.xp * quantityCompleted;
         exercise.quantityCompleted = quantityCompleted;
-        exercise.xpEarnedString = __xpStringify(exercise.xpEarned);
+        exercise.xpEarnedString = stringifyXp(exercise.xpEarned);
         return exercise;
     };
 }
 
-function __xpStringify(xp) {
-    return `${xp}xp`;
+export class WorkoutHistory {
+    constructor(user, workout) {
+        this.name = workout.name;
+        this.image = workout.image;
+        this.xpEarned = workout.xpEarned;
+        this.xpEarnedString = workout.xpEarnedString;
+        this.addedByUser = user.uid;
+    }
+
+    toJSON = () => {
+        return {
+            name: this.name,
+            image: this.image,
+            xpEarned: this.xpEarned,
+            xpEarnedString: this.xpEarnedString,
+            addedByUser: this.addedByUser
+        }
+    };
 }

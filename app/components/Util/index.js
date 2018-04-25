@@ -9,3 +9,7 @@ export const round = (number, precision) => {
     };
     return shift(Math.round(shift(number, precision, false)), precision, true);
 };
+
+export const stringifyXp = (xp) => {
+    return `${xp}xp`;
+};
