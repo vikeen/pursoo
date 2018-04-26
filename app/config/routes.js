@@ -1,8 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Scene, Router, ActionConst, Stack, Modal, Tabs, Actions} from 'react-native-router-flux';
-import {StackNavigator} from 'react-navigation';
-import {TabNavigator} from 'react-navigation';
+import FontAwesome, {Icons} from 'react-native-fontawesome';
+import {StackNavigator, TabNavigator} from 'react-navigation';
 
 //Splash Component
 import Splash from '../components/Splash/Splash';
@@ -29,7 +28,11 @@ import WorkoutRewardScreen from "../modules/workouts/screens/WorkoutReward";
 import store from '../redux/store'
 import {checkLoginStatus} from "../modules/auth/actions";
 
-import {color, navTitleStyle} from "../styles/theme";
+import {color, tabIconStyle} from "../styles/theme";
+
+function getTabIconStyle(tintColor) {
+    return StyleSheet.flatten([tabIconStyle, {color: tintColor}]);
+}
 
 const AuthStack = StackNavigator({
     Welcome: {screen: WelcomeScreen},
@@ -63,9 +66,24 @@ const ProfileStack = StackNavigator({
 
 const MainTabNavigator = TabNavigator(
     {
-        Home: {screen: HomeStack},
-        Workouts: {screen: WorkoutStack},
-        Profile: {screen: ProfileStack},
+        Home: {
+            screen: HomeStack,
+            navigationOptions: ({navigation}) => ({
+                tabBarIcon: ({tintColor}) => <FontAwesome style={getTabIconStyle(tintColor)}>{Icons.home}</FontAwesome>
+            })
+        },
+        Workouts: {
+            screen: WorkoutStack,
+            navigationOptions: ({navigation}) => ({
+                tabBarIcon: ({tintColor}) => <FontAwesome style={getTabIconStyle(tintColor)}>{Icons.heartbeat}</FontAwesome>
+            })
+        },
+        Profile: {
+            screen: ProfileStack,
+            navigationOptions: ({navigation}) => ({
+                tabBarIcon: ({tintColor}) => <FontAwesome style={getTabIconStyle(tintColor)}>{Icons.userCircleO}</FontAwesome>
+            })
+        },
     },
     {
         tabBarOptions: {

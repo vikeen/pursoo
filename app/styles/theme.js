@@ -33,9 +33,8 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const tabColor = (Platform.OS === "ios") ? "rgba(73,75,76, .5)" : "rgba(255,255,255,.8)";
-const selectedTabColor = (Platform.OS === "ios") ? "rgb(73,75,76)" : "#fff";
 
-const tabIconStyle = {size: 21, color: tabColor, selected: selectedTabColor};
+const tabIconStyle = {fontSize: 25, color: tabColor};
 const navTitleStyle = {fontSize: fontSize.regular, fontFamily: fontFamily.extrabold, color: color.black};
 
 export {
