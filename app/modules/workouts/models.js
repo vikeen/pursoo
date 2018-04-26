@@ -37,9 +37,9 @@ export class WorkoutExercise {
         this.quantity = quantity;
         this.quantityCompleted = 0;
         this.xp = exercise.xp * quantity;
-        this.xpString = stringifyXp(exercise.xp * quantity);
+        this.xpString = stringifyXp(this.xp);
         this.xpEarned = 0;
-        this.xpEarnedString = stringifyXp(0);
+        this.xpEarnedString = stringifyXp(this.xpEarned);
         this.exercise = exercise;
     }
 

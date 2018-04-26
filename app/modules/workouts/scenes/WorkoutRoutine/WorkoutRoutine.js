@@ -11,55 +11,54 @@ class WorkoutRoutine extends React.Component {
     constructor(props) {
         super(props);
 
-        const exerciseIndex = props.exerciseIndex || 0;
-        const exercise = props.workout.exercises[exerciseIndex];
+        const workoutExerciseIndex = props.workoutExerciseIndex || 0;
+        const workoutExercise = props.workout.exercises[workoutExerciseIndex];
 
         this.state = {
-            exerciseIndex,
-            exercise,
+            workoutExerciseIndex,
+            workoutExercise,
             workout: props.workout
         };
     }
 
     onDonePress = () => {
-        let {workout, exerciseIndex} = this.state;
-        let exercise = workout.exercises[exerciseIndex];
-        const quantityCompleted = exercise.quantityCompleted || exercise.quantity;
-        const nextExercise = this.state.workout.exercises[exerciseIndex + 1];
+        const {workout, workoutExercise, workoutExerciseIndex} = this.state;
+        const quantityCompleted = workoutExercise.quantityCompleted || workoutExercise.quantity;
+        const nextWorkoutExercise = this.state.workout.exercises[workoutExerciseIndex + 1];
+        WorkoutExercise.complete(workoutExercise, quantityCompleted);
 
-        exercise = WorkoutExercise.complete(exercise, quantityCompleted);
-
-        if (nextExercise) {
+        if (nextWorkoutExercise) {
             return Actions.push("WorkoutRoutine", {
-                exerciseIndex: exerciseIndex + 1,
+                workoutExerciseIndex: workoutExerciseIndex + 1,
                 workout
             });
         } else {
-            workout = Workout.complete(workout);
-            return Actions.push("WorkoutReward", {workout});
+            return Actions.push("WorkoutReward", {
+                workout: Workout.complete(workout)
+            });
         }
     };
 
     onChangeText = (text) => {
         const quantityCompleted = parseInt(text, 10);
-        const exercise = Object.assign({}, this.state.exercise, {quantityCompleted});
-        this.setState({exercise});
+        const workoutExercise = Object.assign({}, this.state.workoutExercise, {quantityCompleted});
+        this.setState({workoutExercise});
     };
 
     render() {
-        const {exercise} = this.state;
+        const {workoutExercise} = this.state;
 
         return (
             <View style={styles.container}>
-                <Image source={{uri: exercise.image}} style={styles.image}/>
-                <Text style={styles.name}>{exercise.name}</Text>
+                <Image source={{uri: workoutExercise.image}} style={styles.image}/>
+                <Text style={styles.name}>{workoutExercise.name}</Text>
                 <TextInput style={styles.quantity}
                            autoCapitalize="none"
                            autoCorrect={false}
                            keyboardType="numeric"
                            returnKeyType="done"
                            onChangeText={this.onChangeText}
-                           value={exercise.quantity.toString()}
+                           value={workoutExercise.quantity.toString()}
                            selectTextOnFocus={true}/>
                 <Button
                     raised
