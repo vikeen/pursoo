@@ -1,27 +1,29 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {Scene, Router, ActionConst, Stack, Modal, Tabs, Actions} from 'react-native-router-flux';
+import {StackNavigator} from 'react-navigation';
+import {TabNavigator} from 'react-navigation';
 
 //Splash Component
 import Splash from '../components/Splash/Splash';
 
 //Authentication Scenes
-import Welcome from '../modules/auth/scenes/Welcome';
-import Register from '../modules/auth/scenes/Register';
-import CompleteProfile from '../modules/auth/scenes/CompleteProfile';
-import Login from '../modules/auth/scenes/Login';
-import ForgotPassword from '../modules/auth/scenes/ForgotPassword';
-import Profile from "../modules/profile/scenes/Profile";
+import WelcomeScreen from '../modules/auth/screens/Welcome';
+import RegisterScreen from '../modules/auth/screens/Register';
+import CompleteProfileScreen from '../modules/auth/screens/CompleteProfile';
+import LoginScreen from '../modules/auth/screens/Login';
+import ForgotPasswordScreen from '../modules/auth/screens/ForgotPassword';
+import ProfileScreen from "../modules/profile/scenes/Profile";
 
 //Character Scenes
-import Home from '../modules/home/scenes/Home';
-import CharacterEdit from "../modules/characters/scenes/CharacterEdit";
+import HomeScreen from '../modules/home/screens/Home';
+import CharacterEditScreen from "../modules/characters/screens/CharacterEdit";
 
 //Workout Scenes
-import WorkoutList from '../modules/workouts/scenes/WorkoutList';
-import WorkoutDetail from "../modules/workouts/scenes/WorkoutDetail";
-import WorkoutRoutine from "../modules/workouts/scenes/WorkoutRoutine";
-import WorkoutReward from "../modules/workouts/scenes/WorkoutReward";
+import WorkoutListScreen from '../modules/workouts/screens/WorkoutList';
+import WorkoutDetailScreen from "../modules/workouts/screens/WorkoutDetail";
+import WorkoutRoutineScreen from "../modules/workouts/screens/WorkoutRoutine";
+import WorkoutRewardScreen from "../modules/workouts/screens/WorkoutReward";
 
 //Import Store, actions
 import store from '../redux/store'
@@ -29,14 +31,60 @@ import {checkLoginStatus} from "../modules/auth/actions";
 
 import {color, navTitleStyle} from "../styles/theme";
 
-
-
-let tabBarStyle = StyleSheet.create({
-    container: {
-        backgroundColor: color.brandPrimary,
-        opacity: 1
-    }
+const AuthStack = StackNavigator({
+    Welcome: {screen: WelcomeScreen},
+    Register: {screen: RegisterScreen},
+    CompleteProfile: {screen: CompleteProfileScreen},
+    Login: {screen: LoginScreen},
+    ForgotPassword: {screen: ForgotPasswordScreen},
+}, {
+    initialRouteName: 'Welcome',
 });
+
+const WorkoutStack = StackNavigator({
+    WorkoutList: {screen: WorkoutListScreen},
+    WorkoutDetail: {screen: WorkoutDetailScreen},
+    WorkoutRoutine: {screen: WorkoutRoutineScreen},
+    WorkoutReward: {screen: WorkoutRewardScreen},
+}, {
+    initialRouteName: 'WorkoutList',
+});
+
+const HomeStack = StackNavigator({
+    Home: {screen: HomeScreen,},
+    CharacterEdit: {screen: CharacterEditScreen}
+}, {
+    initialRouteName: 'Home',
+});
+
+const ProfileStack = StackNavigator({
+    Profile: {screen: ProfileScreen}
+});
+
+const MainTabNavigator = TabNavigator(
+    {
+        Home: {screen: HomeStack},
+        Workouts: {screen: WorkoutStack},
+        Profile: {screen: ProfileStack},
+    },
+    {
+        tabBarOptions: {
+            style: {
+                backgroundColor: color.brandPrimary
+            },
+            activeTintColor: color.white
+        },
+        navigationOptions: ({navigation}) => ({
+            tabBarOnPress: ({previousScene, scene, jumpToIndex}) => {
+                navigation.popToTop();
+                jumpToIndex(scene.index);
+            }
+        }),
+        animationEnabled: false,
+        swipeEnabled: false
+    }
+);
+
 
 export default class extends React.Component {
     constructor() {
@@ -55,41 +103,14 @@ export default class extends React.Component {
     }
 
     render() {
-        if (!this.state.isReady) {
+        if (this.state.isReady) {
+            if (this.state.isLoggedIn) {
+                return <MainTabNavigator/>;
+            } else {
+                return <AuthStack/>;
+            }
+        } else {
             return <Splash/>;
         }
-
-        return (
-            <Router>
-                <Scene key="root" hideNavBar
-                       navigationBarStyle={{backgroundColor: "#fff"}}
-                       titleStyle={navTitleStyle}
-                       backButtonTintColor={color.black}>
-                    <Stack key="Auth" initial={!this.state.isLoggedIn}>
-                        <Scene key="Welcome" component={Welcome} title="" initial={true} hideNavBar/>
-                        <Scene key="Register" component={Register} title="Register"/>
-                        <Scene key="CompleteProfile" component={CompleteProfile} title="Select Username"/>
-                        <Scene key="Login" component={Login} title="Login"/>
-                        <Scene key="ForgotPassword" component={ForgotPassword} title="Forgot Password"/>
-                    </Stack>
-
-                    <Stack key="Main" initial={this.state.isLoggedIn} hideNavBar={true}>
-                        <Tabs key='MainTabBar' tabBarStyle={tabBarStyle.container}>
-                            <Scene key="Home" component={Home} initial={true} type={ActionConst.REPLACE}/>
-                            <Stack key="Workout">
-                                <Scene key="WorkoutList" component={WorkoutList} title="Workouts" type={ActionConst.REPLACE}/>
-                                <Scene key="WorkoutDetail" component={WorkoutDetail} hideTabBar/>
-                                <Scene key="WorkoutRoutine" component={WorkoutRoutine} hideTabBar/>
-                                <Scene key="WorkoutReward" component={WorkoutReward} hideTabBar/>
-                            </Stack>
-
-                            <Scene key="Profile" component={Profile} title="Profile" type={ActionConst.REPLACE}/>
-                        </Tabs>
-
-                        <Scene key="CharacterEdit" component={CharacterEdit} hideNavBar={false} title="Character"/>
-                    </Stack>
-                </Scene>
-            </Router>
-        )
     }
 }

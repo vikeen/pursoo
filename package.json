@@ -27,11 +27,13 @@
     "react-native": "~0.54.1",
     "react-native-dropdownalert": "^3.4.0",
     "react-native-elements": "^0.19.1",
+    "react-native-fontawesome": "^5.7.0",
     "react-native-keyboard-spacer": "^0.4.1",
     "react-native-loading-spinner-overlay": "^0.5.2",
     "react-native-redux-listener": "^0.3.0",
     "react-native-router-flux": "^4.0.0-beta.28",
     "react-native-size-matters": "^0.1.0",
+    "react-navigation": "^1.5.11",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-thunk": "^2.2.0"

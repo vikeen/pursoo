@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
 import {actions as auth} from "../../index"
@@ -37,36 +36,35 @@ const error = {
 };
 
 class Login extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            error: error
-        };
+    state = {
+        error: error
+    };
 
-        this.onSubmit = this.onSubmit.bind(this);
-        this.onSuccess = this.onSuccess.bind(this);
-        this.onError = this.onError.bind(this);
-    }
+    static navigationOptions = ({navigation}) => {
+        return {
+            title: "Login"
+        }
+    };
 
-    onForgotPassword() {
-        Actions.ForgotPassword()
-    }
+    onForgotPassword = () => {
+        this.props.navigation.navigate('ForgotPassword');
+    };
 
-    onSubmit(data) {
+    onSubmit = (data) => {
         this.setState({error: error}); //clear out error messages
 
         this.props.login(data, this.onSuccess, this.onError)
-    }
+    };
 
-    onSuccess({exists, user}) {
+    onSuccess = ({exists, user}) => {
         if (exists) {
-            Actions.Main();
+            this.props.navigation.navigate('Home');
         } else {
-            Actions.CompleteProfile({user})
+            this.props.navigation.navigate('CompleteProfile', {user});
         }
-    }
+    };
 
-    onError(error) {
+    onError = (error) => {
         let errObj = this.state.error;
 
         if (error.hasOwnProperty("message")) {
@@ -78,7 +76,7 @@ class Login extends React.Component {
             })
         }
         this.setState({error: errObj});
-    }
+    };
 
     render() {
         return (

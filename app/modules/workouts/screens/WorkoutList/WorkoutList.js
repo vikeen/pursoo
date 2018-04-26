@@ -1,12 +1,17 @@
 import React from 'react';
 import {Text, View, Image, FlatList, TouchableOpacity} from 'react-native';
-import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
 import styles from "./styles";
 import {fetchWorkouts} from "../../actions";
 
 class WorkoutList extends React.Component {
+    static navigationOptions = ({navigation}) => {
+        return {
+            title: "Workouts"
+        }
+    };
+
     state = {
         isReady: false,
         workouts: []
@@ -20,14 +25,14 @@ class WorkoutList extends React.Component {
         });
     }
 
-    goToitem = (workout) => {
-        return Actions.push("WorkoutDetail", {workout});
+    goToItem = (workout) => {
+        this.props.navigation.navigate("WorkoutDetail", {workout});
     };
 
     renderWorkoutItem = ({item}) => {
         return (
             <TouchableOpacity key={item.uid} style={styles.workout}
-                              onPress={() => this.goToitem(item)}>
+                              onPress={() => this.goToItem(item)}>
                 <View style={{flex: 1, flexDirection: 'row'}}>
                     <Image style={styles.image} source={{uri: item.image}}/>
                     <View style={{flex: 1, flexDirection: "column"}}>

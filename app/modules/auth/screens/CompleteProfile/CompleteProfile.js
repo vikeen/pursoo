@@ -1,32 +1,38 @@
 import React from 'react';
-
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
 import {actions as auth} from "../../index"
 
-const {resetPassword} = auth;
+const {createUser} = auth;
 
 import Form from "../../../../components/Form"
 
 const fields = [
     {
-        key: 'email',
-        label: "Email Address",
-        placeholder: "Email",
+        key: 'username',
+        label: "Username",
+        placeholder: "Username",
         autoFocus: false,
         secureTextEntry: false,
         value: "",
-        type: "email"
+        type: "text"
     }
 ];
 
 const error = {
     general: "",
-    email: ""
+    username: ""
 };
 
-class ForgotPassword extends React.Component {
+class CompleteProfile extends React.Component {
+    static navigationOptions = ({navigation}) => {
+        return {
+            headerLeft: null,
+            title: "Select Username"
+        }
+    };
+
     constructor() {
         super();
         this.state = {
@@ -41,12 +47,15 @@ class ForgotPassword extends React.Component {
     onSubmit(data) {
         this.setState({error: error}); //clear out error messages
 
-        this.props.resetPassword(data, this.onSuccess, this.onError)
+        //attach user id
+        const {user} = this.props;
+        data['uid'] = user.uid;
+
+        this.props.createUser(data, this.onSuccess, this.onError)
     }
 
     onSuccess() {
-        alert("Password Reminder Sent");
-        Actions.pop();
+        Actions.Main()
     }
 
     onError(error) {
@@ -67,11 +76,12 @@ class ForgotPassword extends React.Component {
     render() {
         return (
             <Form fields={fields}
+                  showLabel={false}
                   onSubmit={this.onSubmit}
-                  buttonTitle={"SUBMIT"}
+                  buttonTitle={"CONTINUE"}
                   error={this.state.error}/>
         );
     }
 }
 
-export default connect(null, {resetPassword})(ForgotPassword);
+export default connect(null, {createUser})(CompleteProfile);

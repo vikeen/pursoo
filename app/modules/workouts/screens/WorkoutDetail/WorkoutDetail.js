@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, FlatList} from 'react-native';
 import {Text, Button} from 'react-native-elements';
-import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
 import styles from "./styles";
@@ -9,21 +8,20 @@ import styles from "./styles";
 class WorkoutDetail extends React.Component {
     constructor(props) {
         super(props);
-
+        const {workout} = props.navigation.state.params;
         this.state = {
-            isReady: false
+            workout: workout
         };
     }
 
-    componentDidMount() {
-        this.setState({isReady: true});
-    }
-
     goToWorkoutRoutine = (workout) => {
-        return Actions.push("WorkoutRoutine", {workout});
+        this.props.navigation.navigate("WorkoutRoutine", {
+            workout,
+            workoutExerciseIndex: 0
+        })
     };
 
-    renderExerciseItem = ({item, index}) => {
+    renderWorkoutExerciseItem = ({item, index}) => {
         return (
             <View key={index} style={styles.exerciseRow}>
                 <Text style={styles.exerciseName}>{item.name}</Text>
@@ -35,11 +33,7 @@ class WorkoutDetail extends React.Component {
     };
 
     render() {
-        const {workout} = this.props;
-
-        if (!this.state.isReady) {
-            return null;
-        }
+        const {workout} = this.state;
 
         return (
             <View style={styles.container}>
@@ -57,7 +51,7 @@ class WorkoutDetail extends React.Component {
                         <FlatList
                             data={workout.exercises}
                             keyExtractor={(item, index) => `${item.key}-${index}`}
-                            renderItem={this.renderExerciseItem}
+                            renderItem={this.renderWorkoutExerciseItem}
 
                         />
                     </View>

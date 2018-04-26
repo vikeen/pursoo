@@ -1,7 +1,6 @@
 import React from 'react';
 import {Button, Text} from 'react-native-elements';
 import {View, Image, TextInput} from 'react-native';
-import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 import {Workout, WorkoutExercise} from "../../models";
 
@@ -11,32 +10,32 @@ class WorkoutRoutine extends React.Component {
     constructor(props) {
         super(props);
 
-        const workoutExerciseIndex = props.workoutExerciseIndex || 0;
-        const workoutExercise = props.workout.exercises[workoutExerciseIndex];
+        const {workout, workoutExerciseIndex} = props.navigation.state.params;
+        const workoutExercise = workout.exercises[workoutExerciseIndex];
 
         this.state = {
             workoutExerciseIndex,
             workoutExercise,
-            workout: props.workout
+            workout
         };
     }
 
     onDonePress = () => {
         const {workout, workoutExercise, workoutExerciseIndex} = this.state;
         const quantityCompleted = workoutExercise.quantityCompleted || workoutExercise.quantity;
-        const nextWorkoutExercise = this.state.workout.exercises[workoutExerciseIndex + 1];
+        const nextWorkoutExercise = workout.exercises[workoutExerciseIndex + 1];
         WorkoutExercise.complete(workoutExercise, quantityCompleted);
 
-        if (nextWorkoutExercise) {
-            return Actions.push("WorkoutRoutine", {
-                workoutExerciseIndex: workoutExerciseIndex + 1,
-                workout
-            });
-        } else {
-            return Actions.push("WorkoutReward", {
+        // if (nextWorkoutExercise) {
+        //     return this.props.navigation.navigate("WorkoutRoutine", {
+        //         workoutExerciseIndex: workoutExerciseIndex + 1,
+        //         workout
+        //     });
+        // } else {
+            return this.props.navigation.navigate("WorkoutReward", {
                 workout: Workout.complete(workout)
             });
-        }
+        // }
     };
 
     onChangeText = (text) => {

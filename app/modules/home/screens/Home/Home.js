@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, ScrollView, View, ImageBackground, Image, StyleSheet} from 'react-native';
+import {Text, ScrollView, View, ImageBackground, Image, StyleSheet, Button} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
@@ -14,12 +14,18 @@ class Home extends React.Component {
         isReady: false,
     };
 
-    componentWillMount() {
-        this.props.navigation.setParams({
-            rightTitle: 'Edit',
-            onRight: this.handleNavEditTouch
-        });
+    static navigationOptions = ({navigation}) => {
+        return {
+            headerRight: (
+                <Button
+                    onPress={() => navigation.navigate('CharacterEdit')}
+                    title="Edit"
+                />
+            )
+        }
+    };
 
+    componentWillMount() {
         Promise.all([
             this.props.dispatch(fetchMyCharacter(this.props.user)),
             this.props.dispatch(getMyWorkoutHistory(this.props.user))
@@ -29,10 +35,6 @@ class Home extends React.Component {
             });
         });
     }
-
-    handleNavEditTouch = () => {
-        Actions.CharacterEdit();
-    };
 
     renderWorkoutHistoryItem = (item) => {
         return (

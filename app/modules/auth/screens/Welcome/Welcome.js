@@ -4,7 +4,6 @@ import {Text, View, TouchableOpacity, Image} from 'react-native';
 import Logo from "../../../../assets/images/logo-lead.png";
 
 import {Button, SocialIcon, Divider} from 'react-native-elements'
-import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
 import {actions as auth, constants as c} from "../../index";
@@ -15,6 +14,13 @@ import styles from "./styles";
 
 class Welcome extends React.Component {
     state = {};
+
+    static navigationOptions = ({navigation}) => {
+      return {
+          header: null
+      }
+    };
+
     constructor() {
         super();
 
@@ -34,9 +40,9 @@ class Welcome extends React.Component {
 
     onSuccess = ({exists, user}) => {
         if (exists) {
-            Actions.Main();
+            this.props.navigation.navigate('Home');
         } else {
-            Actions.CompleteProfile({user})
+            this.props.navigation.navigate('CompleteProfile', {user});
         }
     };
 
@@ -77,14 +83,14 @@ class Welcome extends React.Component {
                             containerViewStyle={[styles.containerView]}
                             buttonStyle={[styles.button]}
                             textStyle={styles.buttonText}
-                            onPress={Actions.Register}/>
+                            onPress={() => this.props.navigation.navigate('Register')}/>
                     </View>
                     <View style={styles.bottom}>
                         <Text style={styles.bottomText}>
                             Already have an account?
                         </Text>
 
-                        <TouchableOpacity onPress={Actions.Login}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
                             <Text style={styles.signInText}>
                                 Sign in
                             </Text>

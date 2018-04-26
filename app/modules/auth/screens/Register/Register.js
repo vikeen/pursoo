@@ -1,31 +1,56 @@
 import React from 'react';
-import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
-import {actions as auth} from "../../index"
+import {actions as auth} from "../../index";
 
-const {createUser} = auth;
+const {register} = auth;
 
 import Form from "../../../../components/Form"
 
 const fields = [
     {
-        key: 'username',
-        label: "Username",
-        placeholder: "Username",
+        key: 'email',
+        label: "Email Address",
+        placeholder: "Email Address",
         autoFocus: false,
         secureTextEntry: false,
         value: "",
-        type: "text"
+        type: "email"
+    },
+    {
+        key: 'password',
+        label: "Password",
+        placeholder: "Password",
+        autoFocus: false,
+        secureTextEntry: true,
+        value: "",
+        type: "password"
+    },
+    {
+        key: 'confirm_password',
+        label: "Confirm Password",
+        placeholder: "Confirm Password",
+        autoFocus: false,
+        secureTextEntry: true,
+        value: "",
+        type: "confirm_password"
     }
 ];
 
 const error = {
     general: "",
-    username: ""
+    email: "",
+    password: "",
+    confirm_password: ""
 };
 
-class CompleteProfile extends React.Component {
+class Register extends React.Component {
+    static navigationOptions = ({navigation}) => {
+        return {
+            title: "Register"
+        }
+    };
+
     constructor() {
         super();
         this.state = {
@@ -37,22 +62,14 @@ class CompleteProfile extends React.Component {
         this.onError = this.onError.bind(this);
     }
 
-    static navigationOptions = {
-        headerLeft: null
-    };
-
     onSubmit(data) {
         this.setState({error: error}); //clear out error messages
 
-        //attach user id
-        const {user} = this.props;
-        data['uid'] = user.uid;
-
-        this.props.createUser(data, this.onSuccess, this.onError)
+        this.props.register(data, this.onSuccess, this.onError)
     }
 
-    onSuccess() {
-        Actions.Main()
+    onSuccess(user) {
+        this.props.navigation.navigate('CompleteProfile', {user});
     }
 
     onError(error) {
@@ -66,7 +83,6 @@ class CompleteProfile extends React.Component {
                 errObj[key] = error[key];
             })
         }
-
         this.setState({error: errObj});
     }
 
@@ -75,10 +91,10 @@ class CompleteProfile extends React.Component {
             <Form fields={fields}
                   showLabel={false}
                   onSubmit={this.onSubmit}
-                  buttonTitle={"CONTINUE"}
+                  buttonTitle={"SIGN UP"}
                   error={this.state.error}/>
         );
     }
 }
 
-export default connect(null, {createUser})(CompleteProfile);
+export default connect(null, {register})(Register);

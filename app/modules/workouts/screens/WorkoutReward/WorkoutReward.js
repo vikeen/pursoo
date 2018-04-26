@@ -1,7 +1,6 @@
 import React from 'react';
 import {Button, Text} from 'react-native-elements';
 import {View, Image, StyleSheet, ScrollView} from 'react-native';
-import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
 import styles from "./styles";
@@ -11,30 +10,41 @@ import {Character} from "../../../characters/models";
 import {LEVEL_CONFIG} from "../../../../config/levels";
 
 class WorkoutReward extends React.Component {
-    state = {
-        isReady: false,
-        character: {}
+    static navigationOptions = ({navigation}) => {
+        return {
+            headerLeft: null,
+            headerRight: null
+        }
     };
 
-    componentWillMount() {
-        this.props.navigation.setParams({
-            backTitle: 'Home',
-            onBack: this.goToHome
-        });
+    constructor(props) {
+        super(props);
+
+        const {workout} = props.navigation.state.params;
+
+        this.state = {
+            workout,
+            isReady: false,
+            character: {}
+        };
     }
 
-    componentDidMount() {
-        this.props.dispatch(fetchMyCharacter(this.props.user)).then(() => {
+    componentWillMount() {
+        const {user, character} = this.props;
+        const {workout} = this.props.navigation.state.params;
+
+        this.props.dispatch(fetchMyCharacter(user)).then(() => {
             this.setState({
-                character: this.props.character,
+                character,
                 isReady: true
             });
 
-            const character = Character.addXp(this.props.character, this.props.workout.xpEarned);
+            const characterWithNewXp = Character.addXp(character, workout.xpEarned);
 
-            this.props.dispatch(updateCharacter(character));
-            this.props.dispatch(createWorkoutHistory(this.props.user, this.props.workout));
-            this.setState({character});
+            this.props.dispatch(updateCharacter(characterWithNewXp));
+            this.props.dispatch(createWorkoutHistory(user, workout));
+
+            this.setState({character: characterWithNewXp});
 
             setTimeout(() => {
                 // animate experience bar
@@ -42,13 +52,8 @@ class WorkoutReward extends React.Component {
         });
     }
 
-    goToHome = () => {
-        Actions.reset("Main");
-    };
-
     render() {
-        const {character} = this.state;
-        const {workout} = this.props;
+        const {workout, character} = this.state;
 
         if (!this.state.isReady) {
             return null;

@@ -8,6 +8,12 @@ import styles from "./styles";
 import {fetchMyCharacter, updateCharacter} from "../../actions";
 
 class CharacterEdit extends React.Component {
+    static navigationOptions = ({navigation}) => {
+        return {
+            title: "Character"
+        }
+    };
+
     constructor(props) {
         super(props);
         this.state = {

@@ -3,7 +3,6 @@ import React from 'react';
 import {View, StyleSheet, Alert, TextInput, Text} from 'react-native';
 
 import {Button} from 'react-native-elements'
-import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
 import styles from "./styles";
@@ -22,11 +21,17 @@ const error = {
 };
 
 class Profile extends React.Component {
+    static navigationOptions = ({navigation}) => {
+        return {
+            title: "Profile"
+        }
+    };
+    state = {
+        error: error
+    };
+
     constructor(props) {
         super(props);
-        this.state = {
-            error: error
-        };
 
         this.fields = [
             {
@@ -46,7 +51,7 @@ class Profile extends React.Component {
     };
 
     onSignOutSuccess = () => {
-        Actions.reset("Auth");
+        this.props.navigation.reset('Welcome');
     };
 
     onSignOutError = (error) => {
