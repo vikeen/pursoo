@@ -1,23 +1,19 @@
 import React from 'react';
-
-import {View, StyleSheet, Alert, TextInput, Text} from 'react-native';
-
+import {ScrollView, Alert} from 'react-native';
 import {Button} from 'react-native-elements'
 import {connect} from 'react-redux';
+import DropdownAlert from 'react-native-dropdownalert';
 
 import styles from "./styles";
 import Form from "../../../../components/Form";
-
-import {actions as auth, theme} from "../../../auth/index";
+import {getUser, signOut} from "../../../auth/actions";
 import {updateUser} from "../../actions";
-
-const {signOut} = auth;
-
-const {color} = theme;
 
 const error = {
     general: "",
-    username: ""
+    username: "",
+    email: "",
+    phone: ""
 };
 
 class Profile extends React.Component {
@@ -27,7 +23,8 @@ class Profile extends React.Component {
         }
     };
     state = {
-        error: error
+        error: error,
+        isReady: false
     };
 
     constructor(props) {
@@ -42,8 +39,34 @@ class Profile extends React.Component {
                 secureTextEntry: false,
                 value: props.user.username,
                 type: "text"
+            },
+            {
+                key: 'email',
+                label: "Email",
+                placeholder: "Email",
+                autoFocus: false,
+                secureTextEntry: false,
+                value: props.user.email,
+                type: "email"
+            },
+            {
+                key: 'phone',
+                label: "Phone",
+                placeholder: "Phone",
+                autoFocus: false,
+                secureTextEntry: false,
+                value: props.user.phone,
+                type: "phone"
             }
         ];
+    }
+
+    componentWillMount() {
+        this.props.dispatch(getUser(this.props.user, () => {
+            this.setState({
+                isReady: true
+            });
+        }));
     }
 
     onSignOut = () => {
@@ -67,6 +90,7 @@ class Profile extends React.Component {
     };
 
     onProfileSuccess = () => {
+        this.dropdown.alertWithType('success', 'Profile saved!', "");
     };
 
     onProfileError = (error) => {
@@ -85,8 +109,13 @@ class Profile extends React.Component {
     };
 
     render() {
+        if (!this.state.isReady) {
+            return null;
+        }
+
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
+                <DropdownAlert ref={ref => this.dropdown = ref} zIndex={1000}/>
                 <Form fields={this.fields}
                       showLabel={true}
                       onSubmit={this.onProfileSubmit}
@@ -98,7 +127,7 @@ class Profile extends React.Component {
                     title={'LOG OUT'}
                     style={styles.signOutButton}
                     onPress={this.onSignOut}/>
-            </View>
+            </ScrollView>
         );
     }
 }
@@ -107,7 +136,8 @@ function mapStateToProps(state) {
     return {
         user: state.authReducer.user,
         signOut,
-        updateUser
+        updateUser,
+        getUser
     };
 }
 

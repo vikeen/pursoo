@@ -29,6 +29,22 @@ export function createUser(user, successCB, errorCB) {
     };
 }
 
+export function getUser(user, successCB, errorCB) {
+    return (dispatch) => {
+        api.getUser(user, (success, data, error) => {
+            console.log(success, data, error);
+            if (success) {
+                if (data.exists) {
+                    dispatch({type: t.LOGGED_IN, data: data.user});
+                }
+                successCB(data);
+            } else if (error) {
+                errorCB(error);
+            }
+        });
+    }
+}
+
 export function login(data, successCB, errorCB) {
     return (dispatch) => {
         api.login(data, (success, data, error) => {

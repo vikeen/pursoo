@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet, Alert, ImageBackground, Image, TouchableOpacity} from 'react-native';
+import {View} from 'react-native';
 import {FormLabel, FormInput, Button} from 'react-native-elements';
 import {connect} from 'react-redux';
 import DropdownAlert from 'react-native-dropdownalert';
