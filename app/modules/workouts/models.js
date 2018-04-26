@@ -37,17 +37,17 @@ export class WorkoutExercise {
         this.quantity = quantity;
         this.quantityCompleted = 0;
         this.xp = exercise.xp * quantity;
-        this.xpString = stringifyXp(exercise.xp);
+        this.xpString = stringifyXp(exercise.xp * quantity);
         this.xpEarned = 0;
         this.xpEarnedString = stringifyXp(0);
         this.exercise = exercise;
     }
 
-    static complete = (exercise, quantityCompleted) => {
-        exercise.xpEarned = exercise.xp * quantityCompleted;
-        exercise.quantityCompleted = quantityCompleted;
-        exercise.xpEarnedString = stringifyXp(exercise.xpEarned);
-        return exercise;
+    static complete = (workoutExercise, quantityCompleted) => {
+        workoutExercise.xpEarned = workoutExercise.exercise.xp * quantityCompleted;
+        workoutExercise.quantityCompleted = quantityCompleted;
+        workoutExercise.xpEarnedString = stringifyXp(workoutExercise.xpEarned);
+        return workoutExercise;
     };
 }
 

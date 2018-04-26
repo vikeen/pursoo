@@ -25,9 +25,9 @@ class WorkoutRoutine extends React.Component {
         let {workout, exerciseIndex} = this.state;
         let exercise = workout.exercises[exerciseIndex];
         const quantityCompleted = exercise.quantityCompleted || exercise.quantity;
-        exercise = WorkoutExercise.complete(exercise, quantityCompleted);
-
         const nextExercise = this.state.workout.exercises[exerciseIndex + 1];
+
+        exercise = WorkoutExercise.complete(exercise, quantityCompleted);
 
         if (nextExercise) {
             return Actions.push("WorkoutRoutine", {
