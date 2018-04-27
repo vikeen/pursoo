@@ -32,7 +32,6 @@ export function createUser(user, successCB, errorCB) {
 export function getUser(user, successCB, errorCB) {
     return (dispatch) => {
         api.getUser(user, (success, data, error) => {
-            console.log(success, data, error);
             if (success) {
                 if (data.exists) {
                     dispatch({type: t.LOGGED_IN, data: data.user});

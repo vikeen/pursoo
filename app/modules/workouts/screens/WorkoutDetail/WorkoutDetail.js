@@ -2,6 +2,7 @@ import React from 'react';
 import {View, FlatList} from 'react-native';
 import {Text, Button} from 'react-native-elements';
 import {connect} from 'react-redux';
+import Reporting from "../../../reporting";
 
 import styles from "./styles";
 
@@ -14,7 +15,8 @@ class WorkoutDetail extends React.Component {
         };
     }
 
-    goToWorkoutRoutine = (workout) => {
+    startWorkoutRoutine = (workout) => {
+        Reporting.track("start-workout", {name: workout.name});
         this.props.navigation.navigate("WorkoutRoutine", {
             workout,
             workoutExerciseIndex: 0
@@ -64,7 +66,7 @@ class WorkoutDetail extends React.Component {
                     containerViewStyle={styles.containerView}
                     buttonStyle={styles.button}
                     textStyle={styles.buttonText}
-                    onPress={() => this.goToWorkoutRoutine(workout)}/>
+                    onPress={() => this.startWorkoutRoutine(workout)}/>
             </View>
         );
     }
