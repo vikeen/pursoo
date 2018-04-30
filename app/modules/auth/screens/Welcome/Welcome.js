@@ -1,5 +1,4 @@
 import React from 'react';
-import {Facebook} from 'expo';
 import {Text, View, TouchableOpacity, Image} from 'react-native';
 import Logo from "../../../../assets/images/logo-lead.png";
 
@@ -31,11 +30,11 @@ class Welcome extends React.Component {
     //get users permission authorization (ret: facebook token)
     async onSignInWithFacebook() {
         const options = {permissions: ['public_profile', 'email']};
-        const {type, token} = await Facebook.logInWithReadPermissionsAsync(c.FACEBOOK_APP_ID, options);
+        // const {type, token} = await Facebook.logInWithReadPermissionsAsync(c.FACEBOOK_APP_ID, options);
 
-        if (type === 'success') {
-            this.props.signInWithFacebook(token, this.onSuccess, this.onError)
-        }
+        // if (type === 'success') {
+        //     this.props.signInWithFacebook(token, this.onSuccess, this.onError)
+        // }
     }
 
     onSuccess = ({exists, user}) => {

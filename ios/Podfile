@@ -1,0 +1,21 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+
+target 'MyFitClan' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for MyFitClan
+  pod 'Firebase/Core'
+
+  target 'MyFitClan-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'MyFitClanTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

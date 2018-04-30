@@ -1,6 +1,5 @@
 import React from 'react';
 import {Text, ScrollView, View, ImageBackground, Image, StyleSheet, Button} from 'react-native';
-import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
 import styles from "./styles";

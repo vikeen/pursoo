@@ -1,5 +1,4 @@
 import React from 'react';
-import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
 import {actions as auth} from "../../index"
@@ -55,7 +54,7 @@ class CompleteProfile extends React.Component {
     }
 
     onSuccess() {
-        Actions.Main()
+        // Actions.Main()
     }
 
     onError(error) {
