@@ -1,5 +1,4 @@
 apply plugin: "com.android.application"
-apply plugin: "io.fabric"
 
 import com.android.build.OutputFile
 
@@ -95,14 +94,11 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    // because of firestore:
-    dexOptions {
-        javaMaxHeapSize "4g"
-    }
-    compileSdkVersion 27
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.fitnessquest.fitnessquest"
+        applicationId "com.myfitclan"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
@@ -110,8 +106,6 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
-        // because of firestore:
-        multiDexEnabled true
     }
     splits {
         abi {
@@ -125,10 +119,6 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-        }
-        debug {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
     // applicationVariants are e.g. debug, release
@@ -147,35 +137,9 @@ android {
 }
 
 dependencies {
-    compile(project(':react-native-firebase')) {
-        transitive = false
-    }
-    implementation(project(':react-native-firebase')) {
-        transitive = false
-    }
-
-    // RNFirebase required dependencies
-    implementation "com.google.firebase:firebase-core:15.0.0"
-    implementation "com.google.android.gms:play-services-base:15.0.0"
-
-    // RNFirebase optional dependencies
-    implementation "com.google.firebase:firebase-ads:15.0.0"
-    implementation "com.google.firebase:firebase-auth:15.0.0"
-    implementation "com.google.firebase:firebase-config:15.0.0"
-    implementation "com.google.firebase:firebase-database:15.0.0"
-    implementation "com.google.firebase:firebase-invites:15.0.0"
-    implementation "com.google.firebase:firebase-firestore:15.0.0"
-    implementation "com.google.firebase:firebase-messaging:15.0.0"
-    implementation "com.google.firebase:firebase-perf:15.0.0"
-    implementation "com.google.firebase:firebase-storage:15.0.0"
-    
-    implementation('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
-        transitive = true
-    }
-
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "com.android.support:appcompat-v7:27.0.2"
-    implementation "com.facebook.react:react-native:+"  // From node_modules
+    compile fileTree(dir: "libs", include: ["*.jar"])
+    compile "com.android.support:appcompat-v7:23.0.1"
+    compile "com.facebook.react:react-native:+"  // From node_modules
 }
 
 // Run this once to be able to run the application with BUCK
@@ -184,5 +148,3 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
-
-apply plugin: 'com.google.gms.google-services'
