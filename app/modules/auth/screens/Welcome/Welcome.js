@@ -1,10 +1,10 @@
 import React from 'react';
 import {Text, View, TouchableOpacity, Image} from 'react-native';
-import Logo from "../../../../assets/images/logo-lead.png";
-
-import {Button, SocialIcon, Divider} from 'react-native-elements'
+import {Button, SocialIcon, Divider} from 'react-native-elements';
+import {NavigationActions} from 'react-navigation';
 import {connect} from 'react-redux';
 
+import Logo from "../../../../assets/images/logo-lead.png";
 import {actions as auth, constants as c} from "../../index";
 
 const {signInWithFacebook} = auth;
@@ -15,15 +15,26 @@ class Welcome extends React.Component {
     state = {};
 
     static navigationOptions = ({navigation}) => {
-      return {
-          header: null
-      }
+        return {
+            header: null
+        }
     };
 
     constructor() {
         super();
 
         this.onSignInWithFacebook = this.onSignInWithFacebook.bind(this);
+    }
+
+    componentWillMount() {
+        if (this.props.isLoggedIn) {
+            const resetAction = NavigationActions.reset({
+                index: 0,
+                key: null,
+                actions: [NavigationActions.navigate({routeName: 'Main'})],
+            });
+            this.props.navigation.dispatch(resetAction);
+        }
     }
 
 
@@ -36,18 +47,6 @@ class Welcome extends React.Component {
         //     this.props.signInWithFacebook(token, this.onSuccess, this.onError)
         // }
     }
-
-    onSuccess = ({exists, user}) => {
-        if (exists) {
-            this.props.navigation.navigate('Home');
-        } else {
-            this.props.navigation.navigate('CompleteProfile', {user});
-        }
-    };
-
-    onError = (error) => {
-        alert(error.message);
-    };
 
     render() {
         return (
@@ -102,7 +101,10 @@ class Welcome extends React.Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        isLoggedIn: state.authReducer.isLoggedIn
+    }
+}
 
-export default connect(null, {
-    signInWithFacebook
-})(Welcome);
+export default connect(mapStateToProps, {signInWithFacebook})(Welcome);

@@ -1,17 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {actions as auth} from "../../index"
-
-const {createUser} = auth;
-
-import Form from "../../../../components/Form"
+import {createMyCharacter} from "../../../characters/actions";
+import Form from "../../../../components/Form";
+import {NavigationActions} from "react-navigation";
 
 const fields = [
     {
-        key: 'username',
-        label: "Username",
-        placeholder: "Username",
+        key: 'name',
+        label: "Name",
+        placeholder: "My Character",
         autoFocus: false,
         secureTextEntry: false,
         value: "",
@@ -21,43 +19,39 @@ const fields = [
 
 const error = {
     general: "",
-    username: ""
+    name: ""
 };
 
-class CompleteProfile extends React.Component {
+class CreateCharacter extends React.Component {
     static navigationOptions = ({navigation}) => {
         return {
-            headerLeft: null,
-            title: "Select Username"
+            title: "Create Your Character"
         }
     };
 
-    constructor() {
-        super();
-        this.state = {
-            error: error
-        };
+    state = {
+        error: error
+    };
 
-        this.onSubmit = this.onSubmit.bind(this);
-        this.onSuccess = this.onSuccess.bind(this);
-        this.onError = this.onError.bind(this);
-    }
-
-    onSubmit(data) {
+    onSubmit = (data) => {
         this.setState({error: error}); //clear out error messages
 
-        //attach user id
         const {user} = this.props;
-        data['uid'] = user.uid;
 
-        this.props.createUser(data, this.onSuccess, this.onError)
-    }
+        this.props.dispatch(createMyCharacter(user, data.name))
+            .then(this.onSuccess, this.onError)
+    };
 
-    onSuccess() {
-        // Actions.Main()
-    }
+    onSuccess = () => {
+        const resetAction = NavigationActions.reset({
+            index: 0,
+            key: null,
+            actions: [NavigationActions.navigate({routeName: 'Main'})],
+        });
+        this.props.navigation.dispatch(resetAction);
+    };
 
-    onError(error) {
+    onError = (error) => {
         let errObj = this.state.error;
 
         if (error.hasOwnProperty("message")) {
@@ -70,7 +64,7 @@ class CompleteProfile extends React.Component {
         }
 
         this.setState({error: errObj});
-    }
+    };
 
     render() {
         return (
@@ -83,4 +77,10 @@ class CompleteProfile extends React.Component {
     }
 }
 
-export default connect(null, {createUser})(CompleteProfile);
+function mapStateToProps(state) {
+    return {
+        user: state.authReducer.user
+    }
+}
+
+export default connect(mapStateToProps)(CreateCharacter);

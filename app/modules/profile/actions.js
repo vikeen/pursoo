@@ -1,13 +1,7 @@
 import * as api from './api';
 
-export function updateUser(user, successCB, errorCB) {
+export function updateUser(user) {
     return (dispatch) => {
-        api.updateUser(user, (success, data, error) => {
-            if (success) {
-                successCB();
-            } else if (error) {
-                errorCB(error);
-            }
-        });
+        return api.updateUser(user);
     };
 }

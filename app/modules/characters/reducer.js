@@ -10,6 +10,8 @@ const characterReducer = (state = initialState, action) => {
             return Object.assign({}, state, {character: action.character});
         case t.CHARACTER_UPDATED:
             return Object.assign({}, state, {character: action.character});
+        case t.CHARACTER_CREATED:
+            return Object.assign({}, state, {character: action.character});
         default:
             return state;
     }

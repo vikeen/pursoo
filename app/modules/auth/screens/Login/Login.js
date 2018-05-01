@@ -1,12 +1,8 @@
 import React from 'react';
-
 import {connect} from 'react-redux';
 
-import {actions as auth} from "../../index"
-
-import Form from "../../../../components/Form"
-
-const {login} = auth;
+import Form from "../../../../components/Form";
+import {login} from "../../actions";
 
 const fields = [
     {
@@ -52,16 +48,10 @@ class Login extends React.Component {
 
     onSubmit = (data) => {
         this.setState({error: error}); //clear out error messages
+        const {email, password} = data;
 
-        this.props.login(data, this.onSuccess, this.onError)
-    };
-
-    onSuccess = ({exists, user}) => {
-        if (exists) {
-            this.props.navigation.navigate('Home');
-        } else {
-            this.props.navigation.navigate('CompleteProfile', {user});
-        }
+        this.props.dispatch(login(email, password)).then(() => {
+        }, this.onError);
     };
 
     onError = (error) => {
@@ -90,4 +80,8 @@ class Login extends React.Component {
     }
 }
 
-export default connect(null, {login})(Login);
+function mapStateToProps(state) {
+    return {};
+}
+
+export default connect(mapStateToProps)(Login);

@@ -4,56 +4,32 @@ import {auth} from "../../config/firebase";
 
 import {AsyncStorage} from 'react-native';
 
-export function register(data, successCB, errorCB) {
+export function register(email, password) {
     return (dispatch) => {
-        api.register(data, (success, data, error) => {
-            if (success) {
-                successCB(data);
-            } else if (error) {
-                errorCB(error);
-            }
-        });
+        return api.register(email, password)
+            .then((user) => api.createUser(user))
+            .then(() => api.login(email, password))
+            .then(response => {
+                dispatch({type: t.LOGGED_IN, data: response.user})
+            });
     };
 }
 
-export function createUser(user, successCB, errorCB) {
+export function getUser(user) {
     return (dispatch) => {
-        api.createUser(user, (success, data, error) => {
-            if (success) {
-                dispatch({type: t.LOGGED_IN, data: user});
-                successCB();
-            } else if (error) {
-                errorCB(error);
-            }
-        });
-    };
-}
-
-export function getUser(user, successCB, errorCB) {
-    return (dispatch) => {
-        api.getUser(user, (success, data, error) => {
-            if (success) {
-                if (data.exists) {
-                    dispatch({type: t.LOGGED_IN, data: data.user});
-                }
-                successCB(data);
-            } else if (error) {
-                errorCB(error);
+        return api.getUser(user).then(response => {
+            if (response.exists) {
+                dispatch({type: t.LOGGED_IN, data: response.user});
             }
         });
     }
 }
 
-export function login(data, successCB, errorCB) {
+export function login(email, password) {
     return (dispatch) => {
-        api.login(data, (success, data, error) => {
-            if (success) {
-                if (data.exists) {
-                    dispatch({type: t.LOGGED_IN, data: data.user});
-                }
-                successCB(data);
-            } else if (error) {
-                errorCB(error);
+        return api.login(email, password).then(response => {
+            if (response.exists) {
+                dispatch({type: t.LOGGED_IN, data: response.user});
             }
         });
     };
@@ -71,15 +47,10 @@ export function resetPassword(data, successCB, errorCB) {
     };
 }
 
-export function signOut(successCB, errorCB) {
+export function signOut() {
     return (dispatch) => {
-        api.signOut((success, data, error) => {
-            if (success) {
-                dispatch({type: t.LOGGED_OUT});
-                successCB();
-            } else if (error) {
-                errorCB(error);
-            }
+        return api.signOut().then(() => {
+            dispatch({type: t.LOGGED_OUT});
         });
     };
 }

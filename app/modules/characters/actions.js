@@ -1,5 +1,6 @@
 import * as api from './api';
 import * as t from "./actionTypes";
+import {updateUser} from "../profile/api";
 
 export function fetchMyCharacter(user) {
     return (dispatch) => {
@@ -14,5 +15,18 @@ export function updateCharacter(character) {
         return api.updateCharacter(character).then(() => {
             dispatch({type: t.CHARACTER_UPDATED, character});
         });
+    };
+}
+
+export function createMyCharacter(user, name) {
+    return (dispatch) => {
+        return api.createMyCharacter(user, name)
+            .then(character => {
+                user.characterUid = character.uid;
+                return Promise.all([updateUser(user), character]);
+            }).then(([user, character]) => {
+                dispatch({type: t.CHARACTER_CREATED, character});
+                return character;
+            });
     };
 }

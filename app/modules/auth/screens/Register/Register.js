@@ -1,9 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {actions as auth} from "../../index";
-
-const {register} = auth;
+import {register} from "../../actions";
 
 import Form from "../../../../components/Form"
 
@@ -51,28 +49,19 @@ class Register extends React.Component {
         }
     };
 
-    constructor() {
-        super();
-        this.state = {
-            error: error
-        };
+    state = {
+        error: error
+    };
 
-        this.onSubmit = this.onSubmit.bind(this);
-        this.onSuccess = this.onSuccess.bind(this);
-        this.onError = this.onError.bind(this);
-    }
-
-    onSubmit(data) {
+    onSubmit = (data) => {
         this.setState({error: error}); //clear out error messages
+        const {email, password} = data;
 
-        this.props.register(data, this.onSuccess, this.onError)
-    }
+        this.props.dispatch(register(email, password)).then(() => {
+        }, this.onError);
+    };
 
-    onSuccess(user) {
-        this.props.navigation.navigate('CompleteProfile', {user});
-    }
-
-    onError(error) {
+    onError = (error) => {
         let errObj = this.state.error;
 
         if (error.hasOwnProperty("message")) {
@@ -84,7 +73,7 @@ class Register extends React.Component {
             })
         }
         this.setState({error: errObj});
-    }
+    };
 
     render() {
         return (
@@ -97,4 +86,8 @@ class Register extends React.Component {
     }
 }
 
-export default connect(null, {register})(Register);
+function mapStateToProps(state) {
+    return {};
+}
+
+export default connect(mapStateToProps)(Register);

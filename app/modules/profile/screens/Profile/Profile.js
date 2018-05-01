@@ -70,11 +70,7 @@ class Profile extends React.Component {
     }
 
     onSignOut = () => {
-        this.props.dispatch(signOut(this.onSignOutSuccess, this.onSignOutError));
-    };
-
-    onSignOutSuccess = () => {
-        this.props.navigation.reset('Welcome');
+        this.props.dispatch(signOut()).catch(this.onSignOutError);
     };
 
     onSignOutError = (error) => {
@@ -86,7 +82,7 @@ class Profile extends React.Component {
 
         const user = Object.assign({}, this.props.user, data);
 
-        this.props.dispatch(updateUser(user, this.onProfileSuccess, this.onProfileError));
+        this.props.dispatch(updateUser(user)).then(this.onProfileSuccess).catch(this.onProfileError);
     };
 
     onProfileSuccess = () => {
