@@ -16,19 +16,6 @@ export default class App extends Component {
         }
     }
 
-    // async _loadAssetsAsync() {
-    //     const fontAssets = cacheFonts([
-    //         {RobotoExtraBold: require('./app/assets/fonts/Roboto/Roboto-Black.ttf')},
-    //         {RobotoBold: require('./app/assets/fonts/Roboto/Roboto-Bold.ttf')},
-    //         {RobotoMedium: require('./app/assets/fonts/Roboto/Roboto-Medium.ttf')},
-    //         {RobotoRegular: require('./app/assets/fonts/Roboto/Roboto-Regular.ttf')},
-    //         {RobotoLight: require('./app/assets/fonts/Roboto/Roboto-Light.ttf')},
-    //         {FontAwesome: require('./app/assets/fonts/FontAwesome/fontawesome-webfont.ttf')}
-    //     ]);
-    //
-    //     await Promise.all([...fontAssets]);
-    // }
-
     render() {
         if (!this.state.isReady) {
             // return (

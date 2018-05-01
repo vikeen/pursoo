@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/johnrake/Development/fitness-quest/node_modules/react-native/Libraries/fishhook/fishhook.c \
-  /Users/johnrake/Development/fitness-quest/node_modules/react-native/Libraries/fishhook/fishhook.h
+  /Users/johnrake/Development/my-fit-clan/node_modules/react-native/Libraries/fishhook/fishhook.c \
+  /Users/johnrake/Development/my-fit-clan/node_modules/react-native/Libraries/fishhook/fishhook.h

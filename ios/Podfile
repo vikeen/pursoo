@@ -11,6 +11,8 @@ target 'MyFitClan' do
   target 'MyFitClan-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   end
 
   target 'MyFitClanTests' do

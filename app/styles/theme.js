@@ -20,11 +20,11 @@ const fontSize = {
 };
 
 const fontFamily = {
-    extrabold: "RobotoExtraBold",
-    bold: "RobotoBold",
-    medium: "RobotoMedium",
-    regular: "RobotoRegular",
-    light: "RobotoLight"
+    extrabold: "Roboto-ExtraBold",
+    bold: "Roboto-Bold",
+    medium: "Roboto-Medium",
+    regular: "Roboto-Regular",
+    light: "Roboto-Light"
 };
 
 const padding = 8;
