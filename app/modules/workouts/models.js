@@ -33,7 +33,7 @@ export class WorkoutExercise {
     constructor(exercise, quantity) {
         this.name = exercise.name;
         this.pluralizedName = exercise.pluralizedName;
-        this.image = exercise.image;
+        this.imageUrl = exercise.imageUrl;
         this.quantity = quantity;
         this.quantityCompleted = 0;
         this.xp = exercise.xp * quantity;
@@ -54,7 +54,7 @@ export class WorkoutExercise {
 export class WorkoutHistory {
     constructor(user, workout) {
         this.name = workout.name;
-        this.image = workout.image;
+        this.imageUrl = workout.imageUrl;
         this.xpEarned = workout.xpEarned;
         this.xpEarnedString = workout.xpEarnedString;
         this.addedByUser = user.uid;
@@ -63,7 +63,7 @@ export class WorkoutHistory {
     toJSON = () => {
         return {
             name: this.name,
-            image: this.image,
+            imageUrl: this.imageUrl,
             xpEarned: this.xpEarned,
             xpEarnedString: this.xpEarnedString,
             addedByUser: this.addedByUser

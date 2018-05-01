@@ -34,7 +34,7 @@ class WorkoutList extends React.Component {
             <TouchableOpacity key={item.uid} style={styles.workout}
                               onPress={() => this.goToItem(item)}>
                 <View style={{flex: 1, flexDirection: 'row'}}>
-                    <Image style={styles.image} source={{uri: item.image}}/>
+                    <Image style={styles.image} source={{uri: item.imageUrl}}/>
                     <View style={{flex: 1, flexDirection: "column"}}>
                         <Text style={styles.name}>{item.name}</Text>
                         <Text style={styles.name}>{item.difficulty}</Text>

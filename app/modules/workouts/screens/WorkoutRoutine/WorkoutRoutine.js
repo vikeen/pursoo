@@ -49,7 +49,7 @@ class WorkoutRoutine extends React.Component {
 
         return (
             <View style={styles.container}>
-                <Image source={{uri: workoutExercise.image}} style={styles.image}/>
+                <Image source={{uri: workoutExercise.imageUrl}} style={styles.image}/>
                 <Text style={styles.name}>{workoutExercise.name}</Text>
                 <TextInput style={styles.quantity}
                            autoCapitalize="none"

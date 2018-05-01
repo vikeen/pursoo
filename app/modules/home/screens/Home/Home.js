@@ -39,7 +39,7 @@ class Home extends React.Component {
         return (
             <View key={item.uid} style={styles.workout}>
                 <View style={{flex: 1, flexDirection: 'row'}}>
-                    <Image style={styles.workoutImage} source={{uri: item.image}}/>
+                    <Image style={styles.workoutImage} source={{uri: item.imageUrl}}/>
                     <View style={{flex: 1, flexDirection: "column"}}>
                         <Text style={styles.workoutName}>{item.name}</Text>
                         <Text style={styles.workoutName}>{item.xpEarnedString}</Text>
@@ -77,7 +77,7 @@ class Home extends React.Component {
         return (
             <ImageBackground source={MountainsBackground} style={styles.imageBackground}>
                 <ScrollView contentContainerStyle={styles.container}>
-                    <Image source={{uri: character.image}} style={styles.characterImage}/>
+                    <Image source={{uri: character.imageUrl}} style={styles.characterImage}/>
                     <Text style={styles.name} numberOfLines={1} ellipsizeMode="tail">
                         {character.name}
                     </Text>

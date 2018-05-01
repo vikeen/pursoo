@@ -71,7 +71,7 @@ class WorkoutReward extends React.Component {
                     <Text style={styles.title}>{workout.name}</Text>
                     <Text style={styles.xp}>{workout.xpEarnedString}</Text>
 
-                    <Image source={{uri: character.image}} style={styles.image}/>
+                    <Image source={{uri: character.imageUrl}} style={styles.image}/>
                     <View style={styles.xpContainer}>
                         <View style={styles.xpBarContainer}/>
                         <View style={xpBarStyles}/>
