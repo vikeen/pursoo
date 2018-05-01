@@ -8,7 +8,7 @@ export class Character {
         this.level = 1;
         this.name = name;
         this.xp = 0;
-        this.totalXp = 0;
+        this.xpTotal = 0;
         this.uid = uid;
     }
 
@@ -47,7 +47,7 @@ export class Character {
             level: this.level,
             name: this.name,
             xp: this.xp,
-            totalXp: this.totalXp,
+            xpTotal: this.xpTotal,
             uid: this.uid
         }
     }

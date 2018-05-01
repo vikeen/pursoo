@@ -15,16 +15,11 @@ export function fetchWorkouts() {
 }
 
 export const createWorkoutHistory = (workoutHistory) => {
-    return new Promise((resolve, reject) => {
-        const workoutHistoryRef = database.ref('workoutHistory');
-        const childRef = workoutHistoryRef.push();
+    const workoutHistoryRef = database.ref('workoutHistory');
+    const childRef = workoutHistoryRef.push();
+    workoutHistory.uid = childRef.key;
 
-        workoutHistory.uid = childRef.key;
-
-        childRef.set(workoutHistory)
-            .then(() => resolve(workoutHistory))
-            .catch((error) => reject({message: error}));
-    });
+    return childRef.set(workoutHistory).then(() => workoutHistory);
 };
 
 export const getMyWorkoutHistory = (user, limit = 5) => {

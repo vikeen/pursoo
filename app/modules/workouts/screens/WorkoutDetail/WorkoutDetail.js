@@ -16,7 +16,8 @@ class WorkoutDetail extends React.Component {
     }
 
     startWorkoutRoutine = (workout) => {
-        Reporting.track("start-workout", {name: workout.name});
+        Reporting.track("workout__start", {name: workout.name});
+
         this.props.navigation.navigate("WorkoutRoutine", {
             workout,
             workoutExerciseIndex: 0

@@ -8,6 +8,7 @@ import {fetchMyCharacter, updateCharacter} from "../../../characters/actions";
 import {createWorkoutHistory} from "../../../workouts/actions";
 import {Character} from "../../../characters/models";
 import {LEVEL_CONFIG} from "../../../../config/levels";
+import Reporting from "../../../reporting";
 
 class WorkoutReward extends React.Component {
     static navigationOptions = ({navigation}) => {
@@ -30,10 +31,12 @@ class WorkoutReward extends React.Component {
     }
 
     componentWillMount() {
-        const {user, character} = this.props;
+        const {user} = this.props;
         const {workout} = this.props.navigation.state.params;
 
-        this.props.dispatch(fetchMyCharacter(user)).then(() => {
+        Reporting.track("workout__end", {name: workout.name});
+
+        this.props.dispatch(fetchMyCharacter(user)).then(character => {
             this.setState({
                 character,
                 isReady: true
