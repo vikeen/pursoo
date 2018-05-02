@@ -62,11 +62,11 @@ class Profile extends React.Component {
     }
 
     componentWillMount() {
-        this.props.dispatch(getUser(this.props.user, () => {
+        this.props.dispatch(getUser(this.props.user)).then(() => {
             this.setState({
                 isReady: true
             });
-        }));
+        });
     }
 
     onSignOut = () => {
@@ -82,7 +82,7 @@ class Profile extends React.Component {
 
         const user = Object.assign({}, this.props.user, data);
 
-        this.props.dispatch(updateUser(user)).then(this.onProfileSuccess).catch(this.onProfileError);
+        this.props.dispatch(updateUser(user)).then(this.onProfileSuccess, this.onProfileError);
     };
 
     onProfileSuccess = () => {
