@@ -9,6 +9,7 @@ import {createWorkoutHistory} from "../../../workouts/actions";
 import {Character} from "../../../characters/models";
 import {LEVEL_CONFIG} from "../../../../config/levels";
 import Reporting from "../../../reporting";
+import FontAwesome, {Icons} from "react-native-fontawesome";
 
 class WorkoutReward extends React.Component {
     static navigationOptions = ({navigation}) => {
@@ -72,6 +73,7 @@ class WorkoutReward extends React.Component {
                 </View>
                 <View style={styles.content}>
                     <Text style={styles.title}>{workout.name}</Text>
+                    <FontAwesome style={styles.trophy}>{Icons.trophy}</FontAwesome>
                     <Text style={styles.xp}>{workout.xpEarnedLabel}</Text>
 
                     <Image source={{uri: character.imageUrl}} style={styles.image}/>

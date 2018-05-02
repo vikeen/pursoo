@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import Reporting from "../../../reporting";
 
 import styles from "./styles";
+import XpLabel from "../../../../components/XpLabel";
 
 class WorkoutDetail extends React.Component {
     constructor(props) {
@@ -42,8 +43,7 @@ class WorkoutDetail extends React.Component {
             <View style={styles.container}>
                 <Text style={styles.title}>{workout.name}</Text>
                 <View style={{flex: 1, flexDirection: 'column'}}>
-                    <Text>{workout.difficulty}</Text>
-                    <Text>{workout.xpLabel}</Text>
+                    <XpLabel xp={workout.xp} iconSize={21}/>
                     <View style={styles.exerciseRoutineContainer}>
                         <View style={styles.exerciseRowHeader}>
                             <Text style={styles.exerciseNameLabel}/>

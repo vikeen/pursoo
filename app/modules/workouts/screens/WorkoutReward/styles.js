@@ -38,13 +38,18 @@ const styles = StyleSheet.create({
     title: {
         textAlign: 'center',
         fontSize: normalize(25),
-        marginTop: 10
+        marginTop: 10,
+        marginBottom: 30
     },
 
     xp: {
         textAlign: 'center',
         fontSize: normalize(40),
-        marginTop: 30
+        marginTop: 5
+    },
+
+    trophy: {
+        fontSize: normalize(50),
     },
 
     image: {

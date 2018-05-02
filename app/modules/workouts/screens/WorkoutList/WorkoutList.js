@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 
 import styles from "./styles";
 import {fetchWorkouts} from "../../actions";
+import XpLabel from "../../../../components/XpLabel";
 
 class WorkoutList extends React.Component {
     static navigationOptions = ({navigation}) => {
@@ -37,8 +38,7 @@ class WorkoutList extends React.Component {
                     <Image style={styles.image} source={{uri: item.imageUrl}}/>
                     <View style={{flex: 1, flexDirection: "column"}}>
                         <Text style={styles.name}>{item.name}</Text>
-                        <Text style={styles.name}>{item.difficulty}</Text>
-                        <Text style={styles.name}>{item.xpLabel}</Text>
+                        <XpLabel xp={item.xp}/>
                     </View>
                 </View>
             </TouchableOpacity>

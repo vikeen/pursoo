@@ -7,6 +7,7 @@ import {fetchMyCharacter} from "../../../characters/actions";
 import {getMyWorkoutHistory} from "../../../workouts/actions";
 import MountainsBackground from '../../../../assets/images/mountains.png';
 import {Character} from "../../../characters/models";
+import XpLabel from "../../../../components/XpLabel";
 
 class Home extends React.Component {
     state = {
@@ -42,7 +43,7 @@ class Home extends React.Component {
                     <Image style={styles.workoutImage} source={{uri: item.imageUrl}}/>
                     <View style={{flex: 1, flexDirection: "column"}}>
                         <Text style={styles.workoutName}>{item.name}</Text>
-                        <Text style={styles.workoutName}>{item.xpEarnedLabel}</Text>
+                        <XpLabel xp={item.xpEarned}/>
                     </View>
                 </View>
             </View>
