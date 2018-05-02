@@ -24,18 +24,18 @@ class WorkoutRoutine extends React.Component {
         const {workout, workoutExercise, workoutExerciseIndex} = this.state;
         const quantityCompleted = workoutExercise.quantityCompleted || workoutExercise.quantity;
         const nextWorkoutExercise = workout.exercises[workoutExerciseIndex + 1];
-        WorkoutExercise.complete(workoutExercise, quantityCompleted);
+        WorkoutExercise.complete(workoutExercise, quantityCompleted, null);
 
-        // if (nextWorkoutExercise) {
-        //     return this.props.navigation.navigate("WorkoutRoutine", {
-        //         workoutExerciseIndex: workoutExerciseIndex + 1,
-        //         workout
-        //     });
-        // } else {
+        if (nextWorkoutExercise) {
+            return this.props.navigation.navigate("WorkoutRoutine", {
+                workoutExerciseIndex: workoutExerciseIndex + 1,
+                workout
+            });
+        } else {
             return this.props.navigation.navigate("WorkoutReward", {
                 workout: Workout.complete(workout)
             });
-        // }
+        }
     };
 
     onChangeText = (text) => {
@@ -57,7 +57,7 @@ class WorkoutRoutine extends React.Component {
                            keyboardType="numeric"
                            returnKeyType="done"
                            onChangeText={this.onChangeText}
-                           value={workoutExercise.quantity.toString()}
+                           value={workoutExercise.quantityLabel}
                            selectTextOnFocus={true}/>
                 <Button
                     raised

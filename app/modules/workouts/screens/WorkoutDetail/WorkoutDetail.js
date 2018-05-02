@@ -29,8 +29,8 @@ class WorkoutDetail extends React.Component {
             <View key={index} style={styles.exerciseRow}>
                 <Text style={styles.exerciseName}>{item.name}</Text>
                 <Text style={styles.exerciseSets}>1</Text>
-                <Text style={styles.exerciseReps}>{item.quantity}</Text>
-                <Text style={styles.exerciseReward}>{item.xpString}</Text>
+                <Text style={styles.exerciseReps}>{item.quantityLabel || item.durationLabel}</Text>
+                <Text style={styles.exerciseReward}>{item.xpLabel}</Text>
             </View>
         )
     };
@@ -43,7 +43,7 @@ class WorkoutDetail extends React.Component {
                 <Text style={styles.title}>{workout.name}</Text>
                 <View style={{flex: 1, flexDirection: 'column'}}>
                     <Text>{workout.difficulty}</Text>
-                    <Text>{workout.xpString}</Text>
+                    <Text>{workout.xpLabel}</Text>
                     <View style={styles.exerciseRoutineContainer}>
                         <View style={styles.exerciseRowHeader}>
                             <Text style={styles.exerciseNameLabel}/>

@@ -42,7 +42,7 @@ class Home extends React.Component {
                     <Image style={styles.workoutImage} source={{uri: item.imageUrl}}/>
                     <View style={{flex: 1, flexDirection: "column"}}>
                         <Text style={styles.workoutName}>{item.name}</Text>
-                        <Text style={styles.workoutName}>{item.xpEarnedString}</Text>
+                        <Text style={styles.workoutName}>{item.xpEarnedLabel}</Text>
                     </View>
                 </View>
             </View>

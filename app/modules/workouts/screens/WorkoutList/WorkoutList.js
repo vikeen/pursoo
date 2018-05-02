@@ -38,7 +38,7 @@ class WorkoutList extends React.Component {
                     <View style={{flex: 1, flexDirection: "column"}}>
                         <Text style={styles.name}>{item.name}</Text>
                         <Text style={styles.name}>{item.difficulty}</Text>
-                        <Text style={styles.name}>{item.xpString}</Text>
+                        <Text style={styles.name}>{item.xpLabel}</Text>
                     </View>
                 </View>
             </TouchableOpacity>
