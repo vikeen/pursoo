@@ -5,7 +5,6 @@ const {padding, color, fontSize, fontFamily, windowWidth, normalize} = theme;
 
 const resizeMode = 'contain';
 
-const xpBarHeight = 20;
 const xpBarWidth = 300;
 
 const styles = StyleSheet.create({

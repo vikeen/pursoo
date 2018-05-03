@@ -15,6 +15,7 @@ import WorkoutListScreen from '../../modules/workouts/screens/WorkoutList';
 import WorkoutDetailScreen from "../../modules/workouts/screens/WorkoutDetail";
 import WorkoutRoutineScreen from "../../modules/workouts/screens/WorkoutRoutine";
 import WorkoutRewardScreen from "../../modules/workouts/screens/WorkoutReward";
+import ExerciseInfoScreen from "../../modules/exercises/screens/ExerciseInfo";
 
 // Profile
 import ProfileScreen from "../../modules/profile/screens/Profile";
@@ -57,6 +58,7 @@ export default StackNavigator({
                 WorkoutDetail: {screen: WorkoutDetailScreen},
                 WorkoutRoutine: {screen: WorkoutRoutineScreen},
                 WorkoutReward: {screen: WorkoutRewardScreen},
+                ExerciseInfo: {screen: ExerciseInfoScreen}
             }, {
                 initialRouteName: 'WorkoutList',
             }),

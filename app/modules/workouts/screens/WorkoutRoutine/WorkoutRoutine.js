@@ -1,12 +1,31 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
+import FontAwesome, {Icons} from 'react-native-fontawesome';
 import {Workout, WorkoutExercise} from "../../models";
 
 import QuantityExercise from "../../components/QuantityExercise";
 import DurationExercise from "../../components/DurationExercise";
 
 class WorkoutRoutine extends React.Component {
+    static navigationOptions = ({navigation}) => {
+        const params = navigation.state.params || {};
+
+        return {
+            headerRight: (
+                <TouchableOpacity
+                    onPress={params.goToExerciseHelp}>
+                    <FontAwesome
+                        style={{
+                            color: '#007AFF',
+                            fontSize: 22,
+                            marginRight: 10
+                        }}>{Icons.infoCircle}</FontAwesome>
+                </TouchableOpacity>
+            )
+        }
+    };
+
     constructor(props) {
         super(props);
 
@@ -18,6 +37,10 @@ class WorkoutRoutine extends React.Component {
         };
     }
 
+    componentWillMount() {
+        this.props.navigation.setParams({ goToExerciseHelp: this.goToExerciseHelp.bind(this) });
+    }
+
     onQuantityExerciseDone = (workoutExercise, quantityCompleted) => {
         WorkoutExercise.complete(workoutExercise, quantityCompleted, undefined);
         this.goToNextExercise();
@@ -26,6 +49,13 @@ class WorkoutRoutine extends React.Component {
     onDurationExerciseDone = (workoutExercise, durationCompleted) => {
         WorkoutExercise.complete(workoutExercise, undefined, durationCompleted);
         this.goToNextExercise();
+    };
+
+    goToExerciseHelp = () => {
+        const {workout, workoutExerciseIndex} = this.state;
+        const exercise = workout.exercises[workoutExerciseIndex].exercise;
+
+        this.props.navigation.navigate('ExerciseInfo', {exercise});
     };
 
     goToNextExercise = () => {

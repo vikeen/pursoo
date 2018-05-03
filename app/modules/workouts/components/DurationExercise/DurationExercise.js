@@ -63,8 +63,6 @@ export default class DurationExercise extends React.Component {
                 progress: 1 - round(durationCompleted / workoutExercise.duration, 2)
             });
         }
-
-
     };
 
     tearDown = () => {
