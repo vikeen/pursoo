@@ -74,14 +74,14 @@ export default class DurationExercise extends React.Component {
     };
 
     render() {
-        const {workoutExercise, buttonText, progress, isRunning} = this.state;
+        const {workoutExercise, buttonText, progress, isRunning, durationCompleted} = this.state;
         const buttonHandler = isRunning ? this.onDonePress : this.onStartPress;
 
         return (
             <View style={styles.container}>
                 <Image source={{uri: workoutExercise.imageUrl}} style={styles.image}/>
                 <Text style={styles.name}>{workoutExercise.name}</Text>
-                <Text style={styles.duration}>{workoutExercise.durationLabel}</Text>
+                <Text style={styles.duration}>{workoutExercise.duration - durationCompleted}</Text>
                 <Progress.Bar progress={progress} width={250} borderRadius={0}/>
                 <Button
                     raised
