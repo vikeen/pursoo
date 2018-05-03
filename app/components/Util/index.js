@@ -13,3 +13,7 @@ export const round = (number, precision) => {
 export const stringifyXp = (xp) => {
     return `${xp}xp`;
 };
+
+export function upperCaseFirstCharacter(string) {
+    return string[0].toUpperCase() + string.substr(1);
+}
