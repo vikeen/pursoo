@@ -8,6 +8,7 @@ import {getMyWorkoutHistory} from "../../../workouts/actions";
 import MountainsBackground from '../../../../assets/images/mountains.png';
 import {Character} from "../../../characters/models";
 import XpLabel from "../../../../components/XpLabel";
+import {LEVEL_CONFIG} from "../../../../config/levels";
 
 class Home extends React.Component {
     state = {
@@ -88,7 +89,7 @@ class Home extends React.Component {
                         <View style={xpBarStyles}/>
                         <View style={styles.xpTextContainer}>
                             <Text>Experience</Text>
-                            <Text>{character.xp} / 250</Text>
+                            <Text>{character.xp} / {LEVEL_CONFIG[character.level].xpNeeded}</Text>
                         </View>
                     </View>
                     {this.renderWorkoutHistory()}

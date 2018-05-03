@@ -2,8 +2,10 @@ import React from 'react';
 import {Button, Text} from 'react-native-elements';
 import {View, Image, TextInput} from 'react-native';
 import PropTypes from "prop-types";
+import * as Progress from 'react-native-progress';
 
 import styles from "./styles";
+import {round} from "../../../../components/Util";
 
 export default class DurationExercise extends React.Component {
     static propTypes = {
@@ -17,46 +19,82 @@ export default class DurationExercise extends React.Component {
 
         this.state = {
             workoutExercise: props.workoutExercise,
-            workout: props.workout
+            workout: props.workout,
+            buttonText: "Start",
+            progress: 1,
+            isRunning: false,
+            durationCompleted: 0
         };
+
+        this.progressInterval = null;
+    }
+
+    componentWillUnmount() {
+        this.tearDown();
     }
 
     onDonePress = () => {
-        const {workoutExercise} = this.state;
-        const durationCompleted = workoutExercise.durationCompleted || workoutExercise.duration;
+        const {workoutExercise, durationCompleted} = this.state;
         this.props.onDone(workoutExercise, durationCompleted);
+        this.tearDown();
     };
 
-    onChangeText = (duration) => {
-        const durationCompleted = parseInt(duration, 10);
-        const workoutExercise = Object.assign({}, this.state.workoutExercise, {durationCompleted});
-        this.setState({workoutExercise});
+    onStartPress = () => {
+        this.setState({
+            progress: 1,
+            isRunning: true,
+            buttonText: "Done (0s)",
+            durationCompleted: 0
+        });
+
+        this.progressInterval = setInterval(this.calcProgress, 1000);
+    };
+
+    calcProgress = () => {
+        const {workoutExercise} = this.state;
+        const durationCompleted = this.state.durationCompleted + 1;
+
+        if (durationCompleted > workoutExercise.duration) {
+            this.tearDown();
+        } else {
+            this.setState({
+                durationCompleted,
+                buttonText: `Done (${this.state.durationCompleted + 1}s)`,
+                progress: 1 - round(durationCompleted / workoutExercise.duration, 2)
+            });
+        }
+
+
+    };
+
+    tearDown = () => {
+        if (this.progressInterval) {
+            clearInterval(this.progressInterval);
+        }
     };
 
     render() {
-        const {workoutExercise} = this.state;
+        const {workoutExercise, buttonText, progress, isRunning} = this.state;
+        const buttonHandler = isRunning ? this.onDonePress : this.onStartPress;
 
         return (
             <View style={styles.container}>
                 <Image source={{uri: workoutExercise.imageUrl}} style={styles.image}/>
                 <Text style={styles.name}>{workoutExercise.name}</Text>
-                <TextInput style={styles.quantity}
-                           autoCapitalize="none"
-                           autoCorrect={false}
-                           keyboardType="numeric"
-                           returnKeyType="done"
-                           onChangeText={this.onChangeText}
-                           value={workoutExercise.durationLabel}
-                           selectTextOnFocus={true}/>
+                <Text style={styles.duration}>{workoutExercise.durationLabel}</Text>
+                <Progress.Bar progress={progress} width={250} borderRadius={0}/>
                 <Button
                     raised
-                    title={"DONE"}
+                    title={buttonText}
                     borderRadius={4}
                     style={styles.button}
-                    containerViewStyle={styles.containerView}
+                    containerViewStyle={{
+                        marginTop: 20,
+                        width: 200
+                    }}
                     buttonStyle={styles.button}
                     textStyle={styles.buttonText}
-                    onPress={this.onDonePress}/>
+                    onPress={buttonHandler}/>
             </View>
         );
     }

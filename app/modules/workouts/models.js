@@ -64,11 +64,11 @@ export class WorkoutExercise {
         workoutExercise.xpEarned = __calcWorkoutExerciseXp(workoutExercise.exercise, quantityCompleted, durationCompleted);
         workoutExercise.xpEarnedLabel = stringifyXp(workoutExercise.xpEarned);
 
-        if (quantityCompleted) {
+        if (quantityCompleted >= 0) {
             workoutExercise.quantityCompleted = quantityCompleted;
             workoutExercise.quantityCompletedLabel = `${quantityCompleted}`;
             return workoutExercise;
-        } else if (durationCompleted) {
+        } else if (durationCompleted >= 0) {
             workoutExercise.durationCompleted = durationCompleted;
             workoutExercise.durationCompletedLabel = `${durationCompleted}s`;
             return workoutExercise;
@@ -103,9 +103,9 @@ export class WorkoutHistory {
  */
 
 function __calcWorkoutExerciseXp(exercise, quantity, duration) {
-    if (quantity) {
+    if (quantity >= 0) {
         return exercise.xp * quantity;
-    } else if (duration) {
+    } else if (duration >= 0) {
         return exercise.xp * duration;
     } else {
         throw new Error("workout exercise must have a quantity or duration value");

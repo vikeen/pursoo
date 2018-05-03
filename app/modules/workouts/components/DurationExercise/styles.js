@@ -14,8 +14,8 @@ const styles = StyleSheet.create({
     },
 
     image: {
-        width: 150,
-        height: 150,
+        width: 120,
+        height: 120,
         marginBottom: 10
     },
 
@@ -24,20 +24,15 @@ const styles = StyleSheet.create({
         fontFamily: fontFamily.regular
     },
 
-    quantity: {
+    duration: {
         fontSize: normalize(70),
         fontFamily: fontFamily.bold,
         marginTop: 20
     },
 
-    containerView: {
-        marginVertical: 20,
-        width: 200
-    },
-
     button: {
         backgroundColor: color.brandPrimary,
-        height: normalize(55),
+        height: normalize(45),
     },
 
     buttonText: {
