@@ -1,7 +1,9 @@
 import React from 'react';
-import {Button, Text} from 'react-native-elements';
-import {View, Image, StyleSheet, ScrollView} from 'react-native';
+import {Text} from 'react-native-elements';
+import {View, Image, ScrollView} from 'react-native';
 import {connect} from 'react-redux';
+import * as Progress from 'react-native-progress';
+import FontAwesome, {Icons} from "react-native-fontawesome";
 
 import styles from "./styles";
 import {fetchMyCharacter, updateCharacter} from "../../../characters/actions";
@@ -9,7 +11,6 @@ import {createWorkoutHistory} from "../../../workouts/actions";
 import {Character} from "../../../characters/models";
 import {LEVEL_CONFIG} from "../../../../config/levels";
 import Reporting from "../../../reporting";
-import FontAwesome, {Icons} from "react-native-fontawesome";
 
 class WorkoutReward extends React.Component {
     static navigationOptions = ({navigation}) => {
@@ -63,8 +64,7 @@ class WorkoutReward extends React.Component {
             return null;
         }
 
-        const percentLevelComplete = Character.percentOfLevelComplete(character);
-        const xpBarStyles = StyleSheet.flatten([styles.xpBar, {width: `${percentLevelComplete}%`}]);
+        const xpProgress = Character.percentOfLevelComplete(character);
 
         return (
             <ScrollView style={styles.container}>
@@ -78,8 +78,16 @@ class WorkoutReward extends React.Component {
 
                     <Image source={{uri: character.imageUrl}} style={styles.image}/>
                     <View style={styles.xpContainer}>
-                        <View style={styles.xpBarContainer}/>
-                        <View style={xpBarStyles}/>
+                        <Progress.Bar
+                            progress={xpProgress}
+                            width={null}
+                            height={20}
+                            borderRadius={0}
+                            borderColor={"#000000"}
+                            borderWidth={2}
+                            unfilledColor={"#ffffff"}
+                            color={"#674ea7"}
+                        />
                         <View style={styles.xpTextContainer}>
                             <Text style={styles.level}>{character.level}</Text>
                             <Text>{character.xp} / {LEVEL_CONFIG[character.level].xpNeeded}</Text>

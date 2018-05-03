@@ -35,9 +35,7 @@ export class Character {
     static percentOfLevelComplete(character) {
         const levelConfig = LEVEL_CONFIG[character.level];
         const xpNeededToLevelUp = levelConfig.xpNeeded;
-
-        const percentComplete = (character.xp / xpNeededToLevelUp) * 100;
-        return round(percentComplete, 2);
+        return round(character.xp / xpNeededToLevelUp, 2);
     }
 
     toJSON() {

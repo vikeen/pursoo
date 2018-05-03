@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, ScrollView, View, ImageBackground, Image, StyleSheet, Button} from 'react-native';
 import {connect} from 'react-redux';
+import * as Progress from 'react-native-progress';
 
 import styles from "./styles";
 import {fetchMyCharacter} from "../../../characters/actions";
@@ -73,8 +74,7 @@ class Home extends React.Component {
 
         const {character} = this.props;
 
-        const percentLevelComplete = Character.percentOfLevelComplete(character);
-        const xpBarStyles = StyleSheet.flatten([styles.xpBar, {width: `${percentLevelComplete}%`}]);
+        const xpProgress = Character.percentOfLevelComplete(character);
 
         return (
             <ImageBackground source={MountainsBackground} style={styles.imageBackground}>
@@ -85,8 +85,16 @@ class Home extends React.Component {
                     </Text>
                     <Text style={styles.level}>Level {character.level}</Text>
                     <View style={styles.xpContainer}>
-                        <View style={styles.xpBarContainer}/>
-                        <View style={xpBarStyles}/>
+                        <Progress.Bar
+                            progress={xpProgress}
+                            width={null}
+                            height={20}
+                            borderRadius={0}
+                            borderColor={"#000000"}
+                            borderWidth={2}
+                            unfilledColor={"#ffffff"}
+                            color={"#674ea7"}
+                        />
                         <View style={styles.xpTextContainer}>
                             <Text>Experience</Text>
                             <Text>{character.xp} / {LEVEL_CONFIG[character.level].xpNeeded}</Text>

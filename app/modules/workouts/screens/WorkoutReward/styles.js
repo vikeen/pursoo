@@ -71,20 +71,6 @@ const styles = StyleSheet.create({
         width: xpBarWidth
     },
 
-    xpBarContainer: {
-        backgroundColor: color.white,
-        height: xpBarHeight + 2,
-        width: '100%',
-        borderWidth: 2,
-        borderColor: color.black,
-        marginBottom: -xpBarHeight
-    },
-
-    xpBar: {
-        backgroundColor: '#674ea7',
-        height: xpBarHeight
-    },
-
     xpTextContainer: {
         flex: 1,
         flexDirection: 'row',
