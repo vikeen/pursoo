@@ -1,7 +1,8 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, ScrollView, Image, TouchableOpacity} from 'react-native';
 import {FormLabel, FormInput, Button} from 'react-native-elements';
 import {connect} from 'react-redux';
+import firebase from 'firebase';
 import DropdownAlert from 'react-native-dropdownalert';
 
 import styles from "./styles";
@@ -23,12 +24,16 @@ class CharacterEdit extends React.Component {
     }
 
     componentWillMount() {
-        this.props.dispatch(fetchMyCharacter(this.props.user)).then(() => {
+        return Promise.all([
+            firebase.database().ref('characterImages').once('value'),
+            this.props.dispatch(fetchMyCharacter(this.props.user))
+        ]).then((response) => {
             this.setState({
                 isReady: true,
+                imageUrls: response[0].val(),
                 character: this.props.character
             });
-        })
+        });
     }
 
     onSubmit = () => {
@@ -47,8 +52,16 @@ class CharacterEdit extends React.Component {
         this.setState({character});
     };
 
+    onImagePress = (imageUrl) => {
+        const character = Object.assign({}, this.state.character, {
+            imageUrl
+        });
+
+        this.setState({character});
+    };
+
     render() {
-        const {character} = this.state;
+        const {character, imageUrls} = this.state;
 
         if (!this.state.isReady) {
             return null;
@@ -67,6 +80,25 @@ class CharacterEdit extends React.Component {
                     onChangeText={(text) => this.onChangeText("name", text)}
                     inputStyle={styles.inputContainer}
                     value={character.name}/>
+                <ScrollView horizontal={true} bounces={false} style={{
+                    padding: 10,
+                    marginTop: 10,
+                    flex: 1
+                }}>
+                    {
+                        imageUrls.map(imageUrl => {
+                            return <TouchableOpacity key={imageUrl} onPress={() => this.onImagePress(imageUrl)}>
+                                <Image source={{uri: imageUrl}}
+                                       style={{
+                                           height: 100,
+                                           width: 100,
+                                           resizeMode: 'contain'
+                                       }}
+                                />
+                            </TouchableOpacity>
+                        })
+                    }
+                </ScrollView>
                 <Button
                     raised
                     title="SAVE"
