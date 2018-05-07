@@ -18,7 +18,8 @@ class UpdateUsername extends React.Component {
     };
 
     state = {
-        error: error
+        error,
+        isFetching: false
     };
 
     constructor(props) {
@@ -36,16 +37,18 @@ class UpdateUsername extends React.Component {
     }
 
     onSubmit = (data) => {
-        this.setState({error: error}); //clear out error messages
+        this.setState({
+            error, //clear out error messages
+            isFetching: true
+        });
 
         const {user} = this.props;
         user.username = data.username;
 
-        this.props.dispatch(updateUser(user)).then(this.onSuccess, this.onError);
-    };
-
-    onSuccess = () => {
-        this.props.navigation.push('OnboardingCreateCharacter');
+        this.props.dispatch(updateUser(user)).then(() => {
+            this.setState({isFetching: false});
+            this.props.navigation.push('OnboardingCreateCharacter');
+        }, this.onError);
     };
 
     onError = (error) => {
@@ -60,7 +63,10 @@ class UpdateUsername extends React.Component {
             })
         }
 
-        this.setState({error: errObj});
+        this.setState({
+            error: errObj,
+            isFetching: false
+        });
     };
 
     render() {
@@ -68,6 +74,7 @@ class UpdateUsername extends React.Component {
             <Form fields={this.fields}
                   onSubmit={this.onSubmit}
                   buttonTitle={"CONTINUE"}
+                  isFetching={this.state.isFetching}
                   error={this.state.error}/>
         );
     }

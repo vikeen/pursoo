@@ -22,26 +22,30 @@ class CreateCharacter extends React.Component {
 
     state = {
         error,
+        isFetching: false,
         character: {}
     };
 
-    onSubmit = (data) => {
-        this.setState({error: error}); //clear out error messages
+    onSubmit = () => {
+        this.setState({
+            error, //clear out error messages
+            isFetching: true
+        });
 
         const {user} = this.props;
         const {character} = this.state;
 
         this.props.dispatch(createMyCharacter(user, character.name, character.imageUrl))
-            .then(this.onSuccess, this.onError)
-    };
+            .then(() => {
+                this.setState({isFetching: false});
 
-    onSuccess = () => {
-        const resetAction = NavigationActions.reset({
-            index: 0,
-            key: null,
-            actions: [NavigationActions.navigate({routeName: 'Main'})],
-        });
-        this.props.navigation.dispatch(resetAction);
+                const resetAction = NavigationActions.reset({
+                    index: 0,
+                    key: null,
+                    actions: [NavigationActions.navigate({routeName: 'Main'})],
+                });
+                this.props.navigation.dispatch(resetAction);
+            }, this.onError)
     };
 
     onError = (error) => {
@@ -56,7 +60,10 @@ class CreateCharacter extends React.Component {
             })
         }
 
-        this.setState({error: errObj});
+        this.setState({
+            error: errObj,
+            isFetching: false
+        });
     };
 
     onChangeText = (key, text) => {
@@ -71,7 +78,7 @@ class CreateCharacter extends React.Component {
     };
 
     render() {
-        const {character} = this.state;
+        const {character, isFetching} = this.state;
 
         return (
             <View style={styles.container}>
@@ -92,6 +99,7 @@ class CreateCharacter extends React.Component {
                     raised
                     title="DONE"
                     borderRadius={4}
+                    disabled={isFetching}
                     containerViewStyle={styles.containerView}
                     buttonStyle={styles.button}
                     textStyle={styles.buttonText}

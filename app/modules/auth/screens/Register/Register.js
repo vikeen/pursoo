@@ -50,14 +50,20 @@ class Register extends React.Component {
     };
 
     state = {
-        error: error
+        error,
+        isFetching: false
     };
 
     onSubmit = (data) => {
-        this.setState({error: error}); //clear out error messages
+        this.setState({
+            error, //clear out error messages
+            isFetching: true
+        });
+
         const {email, password} = data;
 
         this.props.dispatch(register(email, password)).then(() => {
+            this.setState({isFetching: false});
         }, this.onError);
     };
 
@@ -72,7 +78,11 @@ class Register extends React.Component {
                 errObj[key] = error[key];
             })
         }
-        this.setState({error: errObj});
+
+        this.setState({
+            error: errObj,
+            isFetching: false
+        });
     };
 
     render() {
@@ -81,6 +91,7 @@ class Register extends React.Component {
                   showLabel={false}
                   onSubmit={this.onSubmit}
                   buttonTitle={"SIGN UP"}
+                  isFetching={this.state.isFetching}
                   error={this.state.error}/>
         );
     }

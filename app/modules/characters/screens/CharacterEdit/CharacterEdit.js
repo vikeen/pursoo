@@ -19,6 +19,7 @@ class CharacterEdit extends React.Component {
         super(props);
         this.state = {
             isReady: false,
+            isFetching: false,
             character: {}
         };
     }
@@ -34,10 +35,13 @@ class CharacterEdit extends React.Component {
 
     onSubmit = () => {
         const {character} = this.state;
+        this.setState({isFetching: true});
 
         this.props.dispatch(updateCharacter(character)).then(() => {
+            this.setState({isFetching: false});
             this.props.navigation.goBack();
-        }).catch(() => {
+        }, () => {
+            this.setState({isFetching: false});
             this.dropdown.alertWithType('error', 'Oops! Something got messed up', "");
         });
     };
@@ -54,7 +58,7 @@ class CharacterEdit extends React.Component {
     };
 
     render() {
-        const {character} = this.state;
+        const {character, isFetching} = this.state;
 
         if (!this.state.isReady) {
             return null;
@@ -79,6 +83,7 @@ class CharacterEdit extends React.Component {
                 <Button
                     raised
                     title="SAVE"
+                    disabled={isFetching}
                     borderRadius={4}
                     containerViewStyle={styles.containerView}
                     buttonStyle={styles.button}

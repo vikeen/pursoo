@@ -33,7 +33,8 @@ const error = {
 
 class Login extends React.Component {
     state = {
-        error: error
+        error,
+        isFetching: false
     };
 
     static navigationOptions = ({navigation}) => {
@@ -47,10 +48,16 @@ class Login extends React.Component {
     };
 
     onSubmit = (data) => {
-        this.setState({error: error}); //clear out error messages
+        this.setState({
+            error, //clear out error messages
+            isFetching: true
+        });
+
         const {email, password} = data;
 
         this.props.dispatch(login(email, password)).then(() => {
+            this.setState({isFetching: false});
+
         }, this.onError);
     };
 
@@ -65,7 +72,11 @@ class Login extends React.Component {
                 errObj[key] = error[key];
             })
         }
-        this.setState({error: errObj});
+
+        this.setState({
+            error: errObj,
+            isFetching: false
+        });
     };
 
     render() {
@@ -74,6 +85,7 @@ class Login extends React.Component {
                   showLabel={false}
                   onSubmit={this.onSubmit}
                   buttonTitle={"LOG IN"}
+                  isFetching={this.state.isFetching}
                   error={this.state.error}
                   onForgotPassword={this.onForgotPassword}/>
         );

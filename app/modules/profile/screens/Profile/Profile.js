@@ -23,7 +23,8 @@ class Profile extends React.Component {
         }
     };
     state = {
-        error: error,
+        error,
+        isFetching: false,
         isReady: false
     };
 
@@ -78,15 +79,17 @@ class Profile extends React.Component {
     };
 
     onProfileSubmit = (data) => {
-        this.setState({error: error}); //clear out error messages
+        this.setState({
+            error, //clear out error messages
+            isFetching: true
+        });
 
         const user = Object.assign({}, this.props.user, data);
 
-        this.props.dispatch(updateUser(user)).then(this.onProfileSuccess, this.onProfileError);
-    };
-
-    onProfileSuccess = () => {
-        this.dropdown.alertWithType('success', 'Profile saved!', "");
+        this.props.dispatch(updateUser(user)).then(() => {
+            this.setState({isFetching: false});
+            this.dropdown.alertWithType('success', 'Profile saved!', "");
+        }, this.onProfileError);
     };
 
     onProfileError = (error) => {
@@ -101,11 +104,16 @@ class Profile extends React.Component {
             })
         }
 
-        this.setState({error: errObj});
+        this.setState({
+            error: errObj,
+            isFetching: false
+        });
     };
 
     render() {
-        if (!this.state.isReady) {
+        const {isReady, isFetching, error } = this.state;
+
+        if (!isReady) {
             return null;
         }
 
@@ -114,9 +122,10 @@ class Profile extends React.Component {
                 <DropdownAlert ref={ref => this.dropdown = ref} zIndex={1000}/>
                 <Form fields={this.fields}
                       showLabel={true}
+                      isFetching={isFetching}
                       onSubmit={this.onProfileSubmit}
                       buttonTitle={"SAVE"}
-                      error={this.state.error}/>
+                      error={error}/>
                 <Button
                     raised
                     borderRadius={4}
