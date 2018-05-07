@@ -10,10 +10,10 @@ export const fetchMyCharacter = (user) => {
         .then(snapshot => snapshot.val());
 };
 
-export const createMyCharacter = (user, name) => {
+export const createMyCharacter = (user, name, imageUrl) => {
     const charactersRef = database.ref('characters');
     const childRef = charactersRef.push();
-    const character = new Character(childRef.key, user, name).toJSON();
+    const character = new Character(childRef.key, user, name, imageUrl).toJSON();
 
     return childRef.set(character).then(() => character);
 };

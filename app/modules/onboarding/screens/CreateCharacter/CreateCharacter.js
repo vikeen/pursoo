@@ -1,21 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
-import {createMyCharacter} from "../../../characters/actions";
-import Form from "../../../../components/Form";
+import {View} from 'react-native';
+import {FormLabel, FormInput, Button} from 'react-native-elements';
 import {NavigationActions} from "react-navigation";
 
-const fields = [
-    {
-        key: 'name',
-        label: "Name",
-        placeholder: "My Character",
-        autoFocus: false,
-        secureTextEntry: false,
-        value: "",
-        type: "text"
-    }
-];
+import {createMyCharacter} from "../../../characters/actions";
+import CharacterImageScrollView from "../../../characters/components/CharacterImageScrollView";
+import styles from "./styles";
 
 const error = {
     general: "",
@@ -30,15 +21,17 @@ class CreateCharacter extends React.Component {
     };
 
     state = {
-        error: error
+        error,
+        character: {}
     };
 
     onSubmit = (data) => {
         this.setState({error: error}); //clear out error messages
 
         const {user} = this.props;
+        const {character} = this.state;
 
-        this.props.dispatch(createMyCharacter(user, data.name))
+        this.props.dispatch(createMyCharacter(user, character.name, character.imageUrl))
             .then(this.onSuccess, this.onError)
     };
 
@@ -66,13 +59,44 @@ class CreateCharacter extends React.Component {
         this.setState({error: errObj});
     };
 
+    onChangeText = (key, text) => {
+        const character = Object.assign({}, this.state.character);
+        character[key] = text;
+        this.setState({character});
+    };
+
+    onCharacterImagePress = (imageUrl) => {
+        const character = Object.assign({}, this.state.character, {imageUrl});
+        this.setState({character});
+    };
+
     render() {
+        const {character} = this.state;
+
         return (
-            <Form fields={fields}
-                  showLabel={false}
-                  onSubmit={this.onSubmit}
-                  buttonTitle={"CONTINUE"}
-                  error={this.state.error}/>
+            <View style={styles.container}>
+                <FormLabel>Name</FormLabel>
+                <FormInput
+                    autoCapitalize='none'
+                    clearButtonMode='while-editing'
+                    underlineColorAndroid={"#fff"}
+                    placeholder="Name"
+                    autoFocus={false}
+                    onChangeText={(text) => this.onChangeText("name", text)}
+                    inputStyle={styles.inputContainer}
+                    value={character.name}/>
+                <FormLabel>Image</FormLabel>
+                <CharacterImageScrollView character={character}
+                                          onSelect={this.onCharacterImagePress}/>
+                <Button
+                    raised
+                    title="DONE"
+                    borderRadius={4}
+                    containerViewStyle={styles.containerView}
+                    buttonStyle={styles.button}
+                    textStyle={styles.buttonText}
+                    onPress={this.onSubmit}/>
+            </View>
         );
     }
 }

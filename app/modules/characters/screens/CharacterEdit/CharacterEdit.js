@@ -1,12 +1,12 @@
 import React from 'react';
-import {View, ScrollView, Image, TouchableOpacity} from 'react-native';
+import {View} from 'react-native';
 import {FormLabel, FormInput, Button} from 'react-native-elements';
 import {connect} from 'react-redux';
-import firebase from 'firebase';
 import DropdownAlert from 'react-native-dropdownalert';
 
 import styles from "./styles";
 import {fetchMyCharacter, updateCharacter} from "../../actions";
+import CharacterImageScrollView from "../../components/CharacterImageScrollView";
 
 class CharacterEdit extends React.Component {
     static navigationOptions = ({navigation}) => {
@@ -24,13 +24,9 @@ class CharacterEdit extends React.Component {
     }
 
     componentWillMount() {
-        return Promise.all([
-            firebase.database().ref('characterImages').once('value'),
-            this.props.dispatch(fetchMyCharacter(this.props.user))
-        ]).then((response) => {
+        this.props.dispatch(fetchMyCharacter(this.props.user)).then(() => {
             this.setState({
                 isReady: true,
-                imageUrls: response[0].val(),
                 character: this.props.character
             });
         });
@@ -52,16 +48,13 @@ class CharacterEdit extends React.Component {
         this.setState({character});
     };
 
-    onImagePress = (imageUrl) => {
-        const character = Object.assign({}, this.state.character, {
-            imageUrl
-        });
-
+    onCharacterImagePress = (imageUrl) => {
+        const character = Object.assign({}, this.state.character, {imageUrl});
         this.setState({character});
     };
 
     render() {
-        const {character, imageUrls} = this.state;
+        const {character} = this.state;
 
         if (!this.state.isReady) {
             return null;
@@ -80,25 +73,9 @@ class CharacterEdit extends React.Component {
                     onChangeText={(text) => this.onChangeText("name", text)}
                     inputStyle={styles.inputContainer}
                     value={character.name}/>
-                <ScrollView horizontal={true} bounces={false} style={{
-                    padding: 10,
-                    marginTop: 10,
-                    flex: 1
-                }}>
-                    {
-                        imageUrls.map(imageUrl => {
-                            return <TouchableOpacity key={imageUrl} onPress={() => this.onImagePress(imageUrl)}>
-                                <Image source={{uri: imageUrl}}
-                                       style={{
-                                           height: 100,
-                                           width: 100,
-                                           resizeMode: 'contain'
-                                       }}
-                                />
-                            </TouchableOpacity>
-                        })
-                    }
-                </ScrollView>
+                <FormLabel>Image</FormLabel>
+                <CharacterImageScrollView character={character}
+                                          onSelect={this.onCharacterImagePress}/>
                 <Button
                     raised
                     title="SAVE"

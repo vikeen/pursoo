@@ -2,9 +2,9 @@ import {LEVEL_CONFIG} from "../../config/levels";
 import {round} from "../../components/Util";
 
 export class Character {
-    constructor(uid, user, name="My Character") {
+    constructor(uid, user, name="My Character", imageUrl) {
         this.addedByUser = user.uid;
-        this.imageUrl = "https://firebasestorage.googleapis.com/v0/b/fitness-quest-1ad0f.appspot.com/o/images%2Fcharacters%2Felf-male-fighter.png?alt=media&token=eab34854-76c6-4ab1-8f8a-1b50fea84d6a";
+        this.imageUrl = imageUrl;
         this.level = 1;
         this.name = name;
         this.xp = 0;

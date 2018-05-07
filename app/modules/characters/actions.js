@@ -20,9 +20,9 @@ export function updateCharacter(character) {
     };
 }
 
-export function createMyCharacter(user, name) {
+export function createMyCharacter(user, name, imageUrl) {
     return (dispatch) => {
-        return api.createMyCharacter(user, name)
+        return api.createMyCharacter(user, name, imageUrl)
             .then(character => {
                 user.characterUid = character.uid;
                 return Promise.all([updateUser(user), character]);
