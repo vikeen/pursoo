@@ -13,14 +13,17 @@ export class Character {
     }
 
     static addXp(character, xpToAdded) {
-        const newCurrentXp = character.xp + xpToAdded;
         const levelConfig = LEVEL_CONFIG[character.level];
+        const isMaxLevel = !LEVEL_CONFIG[character.level + 1];
+
+        if (isMaxLevel) {
+            return character;
+        }
+
+        const newCurrentXp = character.xp + xpToAdded;
         const xpNeededToLevelUp = levelConfig.xpNeeded;
 
-        if (levelConfig.isMaxLevel) {
-            return character
-        }
-        if (newCurrentXp > xpNeededToLevelUp) {
+        if (newCurrentXp >= xpNeededToLevelUp) {
             character.xp = newCurrentXp - xpNeededToLevelUp;
             character.xpTotal += xpToAdded;
             character.level += 1;

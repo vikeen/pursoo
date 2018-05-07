@@ -1,42 +1,32 @@
 export const LEVEL_CONFIG = {
     1: {
-        xpNeeded: 200,
-        isMaxLevel: false
+        xpNeeded: 200
     },
     2: {
-        xpNeeded: 300,
-        isMaxLevel: true
+        xpNeeded: 300
     },
     3: {
-        xpNeeded: 400,
-        isMaxLevel: true
+        xpNeeded: 400
     },
     4: {
-        xpNeeded: 550,
-        isMaxLevel: true
+        xpNeeded: 550
     },
     5: {
-        xpNeeded: 750,
-        isMaxLevel: true
+        xpNeeded: 750
     },
     6: {
-        xpNeeded: 1000,
-        isMaxLevel: true
+        xpNeeded: 1000
     },
     7: {
-        xpNeeded: 1250,
-        isMaxLevel: true
+        xpNeeded: 1250
     },
     8: {
-        xpNeeded: 1500,
-        isMaxLevel: true
+        xpNeeded: 1500
     },
     9: {
-        xpNeeded: 1750,
-        isMaxLevel: true
+        xpNeeded: 1750
     },
     10: {
-        xpNeeded: 2000,
-        isMaxLevel: true
-    },
+        xpNeeded: 2000
+    }
 };
