@@ -98,7 +98,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.myfitclan"
+        applicationId "com.pursoo"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1

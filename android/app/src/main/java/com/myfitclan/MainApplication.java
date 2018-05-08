@@ -1,4 +1,4 @@
-package com.myfitclan;
+package com.pursoo;
 
 import android.app.Application;
 
