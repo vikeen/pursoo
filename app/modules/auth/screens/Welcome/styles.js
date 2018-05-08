@@ -17,13 +17,13 @@ const styles = StyleSheet.create({
         paddingBottom: padding * 2,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: color.brandPrimary,
+        backgroundColor: color.white,
     },
 
     image: {
         height: 300,
         width: 300,
-        backgroundColor: color.brandPrimary,
+        backgroundColor: color.white,
         marginBottom: padding,
         resizeMode
     },
