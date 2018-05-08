@@ -57,22 +57,22 @@ class Welcome extends React.Component {
 
                 <View style={styles.bottomContainer}>
                     <View style={[styles.buttonContainer]}>
-                        <SocialIcon
-                            raised
-                            button
-                            type='facebook'
-                            title='SIGN UP WITH FACEBOOK'
-                            iconSize={19}
-                            style={[styles.containerView, styles.socialButton]}
-                            fontStyle={styles.buttonText}
-                            onPress={this.onSignInWithFacebook}/>
+                        {/*<SocialIcon*/}
+                            {/*raised*/}
+                            {/*button*/}
+                            {/*type='facebook'*/}
+                            {/*title='SIGN UP WITH FACEBOOK'*/}
+                            {/*iconSize={19}*/}
+                            {/*style={[styles.containerView, styles.socialButton]}*/}
+                            {/*fontStyle={styles.buttonText}*/}
+                            {/*onPress={this.onSignInWithFacebook}/>*/}
 
-                        <View style={styles.orContainer}>
-                            <Divider style={styles.divider}/>
-                            <Text style={styles.orText}>
-                                Or
-                            </Text>
-                        </View>
+                        {/*<View style={styles.orContainer}>*/}
+                            {/*<Divider style={styles.divider}/>*/}
+                            {/*<Text style={styles.orText}>*/}
+                                {/*Or*/}
+                            {/*</Text>*/}
+                        {/*</View>*/}
 
                         <Button
                             raised

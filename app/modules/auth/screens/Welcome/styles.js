@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
     },
 
     topContainer: {
-        flex: 1,
         paddingHorizontal: 15,
         paddingBottom: padding * 2,
         justifyContent: "center",
@@ -38,6 +37,7 @@ const styles = StyleSheet.create({
     //===============================
 
     bottomContainer: {
+        flex: 1,
         backgroundColor: "white",
         paddingVertical: padding * 3,
         shadowColor: "#000000",
