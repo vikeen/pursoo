@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: color.white
+        backgroundColor: color.brandPrimary
     },
 
     wrapper:{
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     image:{
         height: 300,
         width: 300,
-        backgroundColor: color.white,
+        backgroundColor: color.brandPrimary,
         marginBottom: padding,
         resizeMode
     },

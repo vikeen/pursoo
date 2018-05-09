@@ -4,7 +4,7 @@ import {Button, SocialIcon, Divider} from 'react-native-elements';
 import {NavigationActions} from 'react-navigation';
 import {connect} from 'react-redux';
 
-import Logo from "../../../../assets/images/logo-lead.png";
+import Logo from "../../../../assets/images/white_logo_transparent.png";
 import {actions as auth, constants as c} from "../../index";
 
 const {signInWithFacebook} = auth;

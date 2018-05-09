@@ -8,21 +8,22 @@ const resizeMode = 'contain';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: color.white
+        backgroundColor: color.brandPrimary
     },
 
     topContainer: {
+        flex: 1,
         paddingHorizontal: 15,
         paddingBottom: padding * 2,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: color.white,
+        backgroundColor: color.brandPrimary,
     },
 
     image: {
         height: 300,
         width: 300,
-        backgroundColor: color.white,
+        backgroundColor: color.brandPrimary,
         marginBottom: padding,
         resizeMode
     },

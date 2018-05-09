@@ -1,3 +1,3 @@
-import CompleteProfile from "./UpdateUsername"
+import CompleteProfile from "./UpdateUsername";
 
 export default CompleteProfile;

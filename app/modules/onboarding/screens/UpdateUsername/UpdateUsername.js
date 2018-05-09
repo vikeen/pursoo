@@ -12,7 +12,6 @@ const error = {
 class UpdateUsername extends React.Component {
     static navigationOptions = ({navigation}) => {
         return {
-            headerLeft: null,
             title: "Select Username"
         }
     };

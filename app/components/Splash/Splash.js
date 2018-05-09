@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, ActivityIndicator, Image} from 'react-native';
-import Logo from "../../assets/images/logo-lead.png";
+import Logo from "../../assets/images/white_logo_transparent.png";
 
 import styles from './styles'
 
